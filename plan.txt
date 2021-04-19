@@ -1,0 +1,103 @@
+1. General Member
+	- Club Id
+	- Name
+	- Student Id
+	- Address
+	- Dept
+	- Level
+	- Phone
+	- Email
+
+2. Moderator
+	- Club Id
+	- Name
+	- Dept
+	- Address
+	- Phone
+	- Email
+
+3. Administrator
+	- Club Id
+	- Name
+	- Email
+	- Address
+
+-----------------------------------------------------
+
+4. Executive Comittee
+	- Club Id
+	- Designation
+	- Assigned Work
+
+5. Mentor Comittee
+	- Club Id
+	- Designation
+	- Course Id
+
+6. Event Management and Organising Comittee
+	- Club Id
+	- Designation
+	- Assigned Work
+
+7. Promotion and Design Comittee
+	- Club Id
+	- Designation 
+	- Assigned Work
+
+8. Course Table
+	- Course Id
+	- Course Name
+	- Start Time
+	- End Time
+	- Course Information
+
+9. Alumni Table
+	- Club Id
+	- Work Place
+	- Research Topic
+
+10. Club Activity (Relationship Table)
+	- Course Id
+	- Partnership Id
+	- Fest Id
+
+11. Club Partnership
+	- Partnership Id
+	- Partner Name(i.e. Club, Company etc)
+	- Partnership Type
+
+12. RnD Project
+	- Project Id
+	- Project Title
+	- Project Budget
+
+13. Project Table (Relationship Table)
+	- Project Id
+	- Club Id
+
+14. Club Budget
+	- Budget Catagory
+	- Budget Amount
+
+15. Contest Programmer
+	- Club Id
+	- Team Name
+	- Previous Contest Name
+	- Previous Contest Position
+
+16. Club Fest
+	- Fest Id
+	- Fest Title
+	- Fest Budget
+	- Fest Date
+
+17. Polling System
+	- Club Id
+	- Designation
+	- Vote Counted
+
+Front End:
+Automatic Certificate Generator
+
+
+
