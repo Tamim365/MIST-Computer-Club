@@ -137,6 +137,10 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'Student_ID' => [
+            'required' => 'Student ID is required',
+            'numeric' => 'Invalid Student ID',
+        ],
     ],
 
     /*
