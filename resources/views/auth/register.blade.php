@@ -161,10 +161,10 @@
             </div>
                  
 
-            {{-- <div class="form-group">
+            <div class="form-group">
                 <label class="checkbox-inline"><input type="checkbox" name = "terms_and_conditions"> I accept the <a
                         href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-            </div> --}}
+            </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
             </div>
