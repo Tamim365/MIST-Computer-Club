@@ -16,4 +16,4 @@ Route::get('/member/profile',[AuthController::class, 'member_profile']);
 
 Route::post('/auth/save',[AuthController::class, 'save'])->name('auth.save');
 Route::post('/auth/check',[AuthController::class, 'check'])->name('auth.check');
-Route::get('/member', [MemberController::class,'index']);
+Route::get('/members', [MemberController::class,'index']);
