@@ -47,10 +47,26 @@ class AuthController extends Controller
         }
 
     }
-    function check(){
+    function check(Request $request){
         $request->validate([
             'email'=>'required|email',
-            'password'=>'required|min:5|max:12'
+            'password'=>'required|min:6'
        ]);
+
+       $userInfo = Member::where('email','=', $request->email)->first();
+        if(!$userInfo){
+            return back()->with('fail','Incorrect Email or Password');
+        }else{
+            if(Hash::check($request->password, $userInfo->password)){
+                $request->session()->put('LoggedUser', $userInfo->id);
+                return redirect('member/profile');
+
+            }else{
+                return back()->with('fail','Incorrect Email or Password');
+            }
+        }
+    }
+    function member_profile(){
+        return view('member.profile');
     }
 }
