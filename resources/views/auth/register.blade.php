@@ -128,6 +128,12 @@
             <h2>Register</h2>
             <p class="hint-text">Create your account.</p>
             
+            @if(Session::get('success'))
+             <div class="alert alert-success">
+                {{ Session::get('success') }}
+             </div>
+            @endif
+
             @csrf
             <div class="form-group">
                 <input type="name" class="form-control" name="name" placeholder="Name" value="{{old('name')}}">
@@ -155,10 +161,10 @@
             </div>
                  
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label class="checkbox-inline"><input type="checkbox" name = "terms_and_conditions"> I accept the <a
                         href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-            </div>
+            </div> --}}
             <div class="form-group">
                 <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
             </div>
