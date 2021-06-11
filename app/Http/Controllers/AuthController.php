@@ -57,7 +57,7 @@ class AuthController extends Controller
             return back()->with('fail','Incorrect Email or Password');
         }else{
             if(Hash::check($request->password, $userInfo->password)){
-                $request->session()->put('LoggedUser', $userInfo->Club_ID);
+                $request->session()->put('LoggedUser', $userInfo->email);
                 return redirect('member/profile');
 
             }else{
@@ -66,7 +66,7 @@ class AuthController extends Controller
         }
     }
     function member_profile(){
-        $data = ['LoggedUserInfo'=>Member::where('email','=', 'LoggedUser')->first()];
+        $data = ['memberData'=>Member::where('email','=', session('LoggedUser'))->first()];
         // dd($data);
         return view('member.profile', $data);
     }
