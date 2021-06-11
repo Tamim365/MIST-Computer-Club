@@ -80,14 +80,12 @@
       <div class="select-block">
         <select name="Tables">
           <option value="" disabled selected>Choose option</option>
-          <option value="Members">Members</option>
-          <option value="Customer">Customer</option>
+          @foreach ($all_table_names as $item)
+              <option value="{{$item}}">{{$item}}</option>
+          @endforeach
+          {{-- <option value="Members">Members</option>
+          <option value="Customer">Customer</option> --}}
         </select>
-        {{-- <div class="selectIcon">
-          <svg focusable="false" viewBox="0 0 104 128" width="25" height="35" class="icon">
-            <path d="m2e1 95a9 9 0 0 1 -9 9 9 9 0 0 1 -9 -9 9 9 0 0 1 9 -9 9 9 0 0 1 9 9zm0-3e1a9 9 0 0 1 -9 9 9 9 0 0 1 -9 -9 9 9 0 0 1 9 -9 9 9 0 0 1 9 9zm0-3e1a9 9 0 0 1 -9 9 9 9 0 0 1 -9 -9 9 9 0 0 1 9 -9 9 9 0 0 1 9 9zm14 55h68v1e1h-68zm0-3e1h68v1e1h-68zm0-3e1h68v1e1h-68z"></path>
-          </svg>
-        </div> --}}
       </div>
       <br><br>
       <input type="submit" name="submit" value="Load"/>
