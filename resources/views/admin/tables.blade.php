@@ -25,11 +25,10 @@
       font-weight: bold;
       cursor: pointer;
       border-radius: 0;
-      background-color: rgb(65, 225, 172);
       border: none;
-      border: 2px solid burlywood;
+      border: 2px solid #30e3ca;
       border-radius: 4px;
-      color: white;
+      color: black;
       appearance: none;
       padding: 8px 38px 10px 18px;
       -webkit-appearance: none;
@@ -76,15 +75,13 @@
   </style>
 
 <div class="container mt-5">
-    <form action="" method="get" class="mb-3">
+    <form action="{{route('tables.load')}}" method="post" class="mb-3">
+    @csrf
       <div class="select-block">
         <select name="Tables">
           <option value="" disabled selected>Choose option</option>
-          <option value="Apple">Apple</option>
-          <option value="Banana">Banana</option>
-          <option value="Coconut">Coconut</option>
-          <option value="Blueberry">Blueberry</option>
-          <option value="Strawberry">Strawberry</option>
+          <option value="Members">Members</option>
+          <option value="Customer">Customer</option>
         </select>
         {{-- <div class="selectIcon">
           <svg focusable="false" viewBox="0 0 104 128" width="25" height="35" class="icon">
@@ -93,19 +90,18 @@
         </div> --}}
       </div>
       <br><br>
-      <input type="submit" name="submit" vlaue="Choose options">
+      <input type="submit" name="submit" value="Load"/>
     </form>
 
     <?php
-      if(isset($_GET['submit'])){
-        if(!empty($_GET['Tables'])) {
-          $selected = $_GET['Tables'];
-        //   echo 'You have chosen: ' . $selected;
-        // } else {
-        //   echo 'Please select the value.';
-        // }
+      if(isset($_POST['submit'])){
+        if(!empty($_POST['Tables'])) {
+          $table_name = $_POST['Tables'];
+        //   echo 'You have chosen: ' . $table_name;
+        } else {
+          echo 'Please select the value.';
+        }
       }
-    }
     ?>
 </div>
 
@@ -116,6 +112,7 @@
         <table class="table table-bordered">
             <tr>
                 <?php
+                    // echo $table_name;
                     $columns = Schema::getColumnListing($table_name);
                     // dd($columns);
                     for($i = 0; $i < count($columns); $i++)
