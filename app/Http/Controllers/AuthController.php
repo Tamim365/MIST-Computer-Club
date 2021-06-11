@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Member;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 
 class AuthController extends Controller
@@ -24,11 +25,9 @@ class AuthController extends Controller
             'password' => 'required|min:6',
             'confirm_password' => 'required|same:password|min:6',
         ]);
-
         // return $request->input();
         try {
             $member = new member;
-            // $member->Club_ID = (string)$request->Student_ID;
             $member->Name = (string)$request->name;
             $member->Email = (string)$request->email;
             $member->Password = (string)Hash::make($request->password);
