@@ -7,7 +7,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home/index');
 });
 
 Route::view('Registration', 'Registration');
