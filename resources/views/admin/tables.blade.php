@@ -129,25 +129,18 @@
             </tr>
             @foreach ($member as $row)
              <tr>
-                <?php
-                    $columns = Schema::getColumnListing($table_name);
-                // dd($columns);
-                    for($i = 0; $i < count($columns); $i++)
+                <?php $columns = Schema::getColumnListing($table_name);?>
+                    @foreach ($columns as $item)
                     {
-                        try {
-                            echo "<td>".$row[$columns[$i]]."</td>";
-                        } catch (\Throwable $th) {
-                            //throw $th;
-                        }
+                      <?php
+                      try {
+                        echo "<td>".$row[$item]."</td>";
+                      } catch (Throwable $th) {
+                        echo "<td>null</td>";
+                      }
+                      ?>
                     }
-                ?>
-                 {{-- <td>{{ $row['club_id'] }}</td>
-                 <td>{{ $row['name'] }}</td>
-                 <td>{{ $row['student_id'] }}</td>
-                 <td>{{ $row['department'] }}</td>
-                 <td>{{ $row['email'] }}</td>
-                 <td>{{ $row['phone_no'] }}</td> --}}
-
+                    @endforeach 
              </tr>
             @endforeach
         </table>
