@@ -129,17 +129,19 @@
             </tr>
             <?php
             foreach ($member as $row)
-             echo "<tr>";
+            {
+              echo "<tr>";
                $columns = Schema::getColumnListing($table_name);
                     foreach ($columns as $item)
                     {
                       try {
-                        echo "<td>".$row[$item]."</td>";
+                        echo "<td>".$row->$item."</td>";
                       } catch (Throwable $th) {
                         echo "<td>null</td>";
                       }
                     }
               echo "</tr>";
+            }
             ?>
         </table>
     </div>

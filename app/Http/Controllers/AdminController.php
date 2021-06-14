@@ -15,10 +15,11 @@ class AdminController extends Controller
     // }
     function load(Request $request){
         $table_name = '';
+        $member = [];
         if ($request->isMethod('post')) {
             $table_name = $request->input('Tables');
+            $member = DB::table($table_name)->get();
         }
-        $member = Member::all()->toArray();
         $all_table_names = DB::table('user_tables')->orderBy('table_name')->pluck('table_name');
         return view('admin/tables',['member'=>$member, 'table_name'=>$table_name, 'all_table_names'=>$all_table_names]);
     }
