@@ -30,3 +30,6 @@
 <link id="theme" rel="stylesheet" href="Home/assets/css/theme-colors/theme-default.css">
 <!-- Jquery -->
 <script src="Home/assets/js/jquery-3.4.1.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">

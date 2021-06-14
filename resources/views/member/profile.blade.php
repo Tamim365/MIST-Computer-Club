@@ -13,6 +13,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Bootstrap DatePicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<!-- Bootstrap DatePicker -->
+    <script type="text/javascript">
+    $(function () {
+        $('#dp2').datepicker({
+            format: "dd-MM-yyyy"
+        });
+    });
+    </script>
 
 <style>
 body{
@@ -95,6 +106,7 @@ h1 {
     $name = $memberData['name'];
     $email = $memberData['email'];
     $st_id = $memberData['student_id'];
+    $dept = $memberData['department'];
 @endphp
 
 <div class="container">
@@ -126,7 +138,7 @@ h1 {
                         <div>
                             <img src="" alt="" id="preview" width=300 height=300 />
                         </div>
-
+                        
                     </div>
                 </div>
                 <div class="card mt-3">
@@ -252,8 +264,36 @@ h1 {
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Department</h6>
                             </div>
-                            <div class="col-sm-9 text-secondary">
+                            {{-- <div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" value="" name = "department">
+                            </div> --}}
+                            @php
+                            $all_depts = [
+                                "CSE" => "Computer Science and Engineering", 
+                                "EECE" => "Electrical, Electronic and Communication Engineering",
+                                "ME" => "Mechanical Engineering",
+                                "CE" => "Civil Engineering",
+                                "AE" => "Aeronautical Engineering",
+                                "NAME" => "Naval Architecture and Marine Engineering",
+                                "IPE" => "Industrial and Production Engineering",
+                                "NSE" => "Nuclear Science & Engineering",
+                                "EWCE" => "Civil, Environmental, Water Resources & Coastal Engineering",
+                                "ARCHITECTURE" => "Architecture",
+                                "PME" => "Petroleum & Mining Engineering"
+                            ];
+                            // foreach (array_keys($all_depts) as $dept_name) {
+                            //     echo $dept_name;
+                            // }
+                            @endphp
+                            <div class="col-sm-9 text-secondary">
+                                <select name="department" class="form-control">
+                                    <option value="" disabled selected>Choose option</option>
+                                    @foreach (array_keys($all_depts) as $dept_name)
+                                        <option value="{{$dept_name}}" @if ($dept == $dept_name) selected @endif>
+                                        {{$all_depts[$dept_name]}}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <hr>
@@ -281,7 +321,7 @@ h1 {
                                 <h6 class="mb-0">Date of Birth</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" value="" name = "dob">
+                                <input type="text" class="form-control" name = "dob" data-date-format="dd-mm-yyyy" value="15-October-2000" id="dp2">
                             </div>
                         </div>
                         <hr>
@@ -395,6 +435,7 @@ h1 {
 
     </div>
 </div>
+   
 
 <script>
     // Getting an instance of the widget.

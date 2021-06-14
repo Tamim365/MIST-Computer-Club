@@ -21,10 +21,7 @@ class CreateMembersTable extends Migration
             $table->string('Email')->unique();
             $table->string('Password');
             $table->string('Phone_No')->nullable();
-        });
-        Schema::table('members', function (Blueprint $table) {
-            $table->string('');
-            $table->string('Address.');
+            $table->string('Address')->nullable();
         });
     }
 
