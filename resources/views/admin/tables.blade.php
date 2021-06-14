@@ -127,22 +127,20 @@
                 <th>Email</th>
                 <th>Phone No.</th> --}}
             </tr>
-            @foreach ($member as $row)
-             <tr>
-                <?php $columns = Schema::getColumnListing($table_name);?>
-                    @foreach ($columns as $item)
+            <?php
+            foreach ($member as $row)
+             echo "<tr>";
+               $columns = Schema::getColumnListing($table_name);
+                    foreach ($columns as $item)
                     {
-                      <?php
                       try {
                         echo "<td>".$row[$item]."</td>";
                       } catch (Throwable $th) {
                         echo "<td>null</td>";
                       }
-                      ?>
                     }
-                    @endforeach 
-             </tr>
-            @endforeach
+              echo "</tr>";
+            ?>
         </table>
     </div>
 </div>
