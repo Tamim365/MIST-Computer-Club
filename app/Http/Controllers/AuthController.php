@@ -70,4 +70,10 @@ class AuthController extends Controller
         // dd($data);
         return view('member.profile', $data);
     }
+    function logOut(){
+        if(session()->has('LoggedUser')){
+            session()->pull('LoggedUser');
+            return redirect('/auth/login');
+        }
+    }
 }
