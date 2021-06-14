@@ -109,6 +109,15 @@ h1 {
     $email = $memberData['email'];
     $st_id = $memberData['student_id'];
     $dept = $memberData['department'];
+    $dob = $memberData['dob'];
+    $phone = $memberData['phone'];
+    $address = $memberData['address'];
+    $club_id = $memberData['Club_Id'];
+    $faculty_id = $memberData['Faculty_Id'];
+    $level = $memberData['Level'];
+    $picture= $memberData['picture'];
+    $panel_role = $memberData['panel_role'];
+    $committe_name= $memberData['committe_name'];
 @endphp
 
 <div class="container">
@@ -147,16 +156,7 @@ h1 {
                     <ul class="list-group list-group-flush">
 
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    {{-- class="feather feather-globe mr-2 icon-inline"> --}}
-                                    {{-- <circle cx="12" cy="12" r="10"></circle> --}}
-                                    {{-- <line x1="2" y1="12" x2="22" y2="12"></line> --}}
-                                    <path
-                                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                                    </path>
-                                </svg>Panel Role</h6>
+                            <h4 class="mb-0">Panel Role</h4>
                             <span class="text-secondary">SINGLE</span>
                         </li>
 
@@ -176,16 +176,8 @@ h1 {
 
 
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    {{-- class="feather feather-twitter mr-2 icon-inline text-info"> --}}
-
-                                    <path
-                                        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
-                                    </path>
-                                </svg>Committee_Name</h6>
-                            <span class="text-secondary">TIT</span>
+                            <h4 class="mb-0">Committee Name</h4>
+                            <span class="text-secondary">SINGLE</span>
                         </li>
 
 
@@ -210,11 +202,19 @@ h1 {
                             <span class="text-secondary">shiary</span>
                         </li> --}}
                     </ul>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <a class="btn btn-info " href="{{route('auth.logout')}}">Log out</a>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
             <div class="col-md-8">
                 <div class="card mb-3">
                     <div class="card-body">
+                        <form action="" method="post">
                         <div class="row">
                             <p>GENERAL INFORMATION</p>
                             <div class="col-sm-3">
@@ -252,7 +252,7 @@ h1 {
                                 <h6 class="mb-0">Address</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                 <input type="text" class="form-control" value="" name = "address"> 
+                                 <input type="text" class="form-control" value="{{$address}}" name = "address"> 
                             </div>
                         </div>
                         
@@ -262,7 +262,7 @@ h1 {
                                 <h6 class="mb-0">Date of Birth</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" name = "dob" data-date-format="dd-mm-yyyy" value="15-October-2000" id="dp2">
+                                <input type="text" class="form-control" name = "dob" data-date-format="dd-mm-yyyy" value="{{$dob}}" id="dp2">
                             </div>
                         </div>
 
@@ -312,7 +312,7 @@ h1 {
                                 <h6 class="mb-0">Level</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" value="" name = "level">
+                                <input type="text" class="form-control" value="{{$level}}" name = "level">
                             </div>
                         </div>
                       
@@ -341,7 +341,7 @@ h1 {
                                 <h6 class="mb-0">Phone</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" value="" name = "phone">
+                                <input type="text" class="form-control" value="{{$phone}}" name = "phone">
                             </div>
                         </div>
                         
@@ -351,11 +351,11 @@ h1 {
                                 <h6 class="mb-0">Club ID</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" value="" name = "club_id">
+                                <input type="text" class="form-control" value="{{$club_id}}" name = "club_id" readonly>
                             </div>
                         </div>
                         <hr>
-                        <div class="row mb-3">
+                        {{-- <div class="row mb-3">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Assigned Work</h6>
                             </div>
@@ -364,7 +364,7 @@ h1 {
                             </div>
                         </div>
                        
-                        <hr>
+                        <hr> --}}
                         <div class="row mb-3">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Old Password</h6>
@@ -399,6 +399,7 @@ h1 {
                                 <a class="btn btn-info " href="{{route('auth.logout')}}">Log out</a>
                             </div>
                         </div>
+                    </form>
                     </div>
                 </div>
 
