@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
 {
@@ -55,5 +56,18 @@ class MemberController extends Controller
             DB::rollback();
             return back()->with('fail','Something went wrong, try again later');
         }
+    }
+    public function uploadImage(Request $request, $id)
+    {
+        try {
+            $fileName =  (string) $request->picture;
+            // dd($fileName, $id);
+            DB::table('members')
+                ->where('club_id', $id)
+                ->update(['picture'=> $fileName]);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+        return redirect('member/profile');
     }
 }

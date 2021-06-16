@@ -83,6 +83,14 @@ body{
   border-radius: 50%;
 }
 
+.uploadcare--widget__button_type_cancel .uploadcare--widget__button_type_remove{
+    display: none;
+}
+
+.uploadcare--widget__file-name, .uploadcare--widget__file-size {
+    display: inline;
+}
+
 /* Styles and stuff for the page */
 #preview {
   margin-top: 1rem;
@@ -139,18 +147,25 @@ h1 {
                     <div class="card-body">
 
                          <script>
-                            UPLOADCARE_PUBLIC_KEY = "demopublickey";
+                            UPLOADCARE_PUBLIC_KEY = "a51f2657278fde93b5e2";
+                            UPLOADCARE_EFFECTS = 'crop';
+                            UPLOADCARE_IMAGES_ONLY = true;
+                            UPLOADCARE_PREVIEW_STEP = true;
+                            UPLOADCARE_CLEARABLE = true;
                         </script>
                         <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
-                        
+                        <script src="https://ucarecdn.com/libs/widget-tab-effects/1.x/uploadcare.tab-effects.js"></script>
                        
+                        <form action="/upload/{{$club_id}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <img src="{{$picture}}" alt="" id="preview" width=300 height=300 />
+                            <br><br>
+                            <input type="hidden" name="picture" role="uploadcare-uploader" data-crop="1:1" data-images-only>
+                            <!-- Your preview will be put here -->
+                            <input class="btn btn-success btn-sm" type="submit" value="Save" style="display: inline-block">
+                        </form>
+
                         <!-- The input element below will turn into the widget -->
-                        <input type="hidden" role="uploadcare-uploader" data-crop="1:1" data-images-only>
-                        <!-- Your preview will be put here -->
-                        <div>
-                            <img src="" alt="" id="preview" width=300 height=300 />
-                        </div>
-                        
                     </div>
                 </div>
                 <div class="card mt-3">

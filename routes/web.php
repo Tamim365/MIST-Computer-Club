@@ -16,6 +16,7 @@ Route::post('/auth/save',[AuthController::class, 'save'])->name('auth.save');
 Route::post('/auth/check',[AuthController::class, 'check'])->name('auth.check');
 // Route::post('/member/profile/update',[MemberController::class, 'update'])->name('member.profile.update');
 Route::post('/member/profile',[MemberController::class, 'update'])->name('member.profile.update');
+Route::post('/upload/{club_id}', [MemberController::class, 'uploadImage']);
 
 Route::any('/tables',[AdminController::class, 'load'])->name('tables.load');
 

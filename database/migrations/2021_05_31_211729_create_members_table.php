@@ -24,7 +24,7 @@ class CreateMembersTable extends Migration
             $table->string('Password');
             $table->string('Phone_No')->nullable();
             $table->string('Address')->nullable();
-            $table->string('picture')->nullable();
+            $table->string('picture')->default('/default_user_img.png');
             $table->string('panel_role')->nullable();
             $table->string('committe_name')->nullable();
             $table->string('dob')->nullable();
