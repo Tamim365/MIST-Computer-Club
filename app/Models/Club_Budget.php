@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Course extends Model
+class Club_Budget extends Model
 {
-    protected $table = 'courses';
+    protected $table = 'Club_Budget';
     public $incrementing = false;
      // public $timestamps = false;
      // protected $table = 'admins';
 
-     protected $primaryKey = 'Course_Id';
+     protected $primaryKey = 'Budget_Id';
     use HasFactory;
 }
