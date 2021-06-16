@@ -20,9 +20,9 @@ class AdminsTable extends Migration
             $table->string('Password');
             $table->string('Phone_No')->nullable();
             $table->string('Access_Time')->nullable();
-           
+
         });
-        
+
     }
 
     /**
@@ -32,6 +32,6 @@ class AdminsTable extends Migration
      */
     public function down()
     {
-       Schema::dropIfExists('admins'); 
+       Schema::dropIfExists('admins');
     }
 }
