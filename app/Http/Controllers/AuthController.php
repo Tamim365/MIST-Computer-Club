@@ -25,7 +25,6 @@ class AuthController extends Controller
             'password' => 'required|min:6',
             'confirm_password' => 'required|same:password|min:6',
         ]);
-        // return $request->input();
         try {
             $member = new member;
             $member->Name = (string)$request->name;
@@ -44,7 +43,6 @@ class AuthController extends Controller
             DB::rollback();
             return;
         }
-
     }
     function check(Request $request){
         $request->validate([
@@ -64,11 +62,6 @@ class AuthController extends Controller
                 return back()->with('fail','Incorrect Email or Password');
             }
         }
-    }
-    function member_profile(){
-        $data = ['memberData'=>Member::where('email','=', session('LoggedUser'))->first()];
-        // dd($data);
-        return view('member.profile', $data);
     }
     function logOut(){
         if(session()->has('LoggedUser')){
