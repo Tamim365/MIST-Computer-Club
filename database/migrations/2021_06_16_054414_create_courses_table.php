@@ -14,18 +14,18 @@ class CreateCoursesTable extends Migration
     public function up()
     {
         Schema::create('courses', function (Blueprint $table) {
-            $table->integer('Course_Id')->primary();
-            $table->integer('Budget_Id');
-            $table->string('Course_Name');
-            $table->date('Start_Date');
+            $table->increments('Course_Id');
+            $table->integer('Budget_Id')->nullable();
+            $table->string('Course_Name')->nullable();
+            $table->date('Start_Date')->nullable();
             $table->date('End_Date')->nullable();
-            $table->text('Course_info');
-            $table->string('Course_status');
-            $table->integer('Course_Rating');
-            $table->integer('Mentor_Rating');
+            $table->text('Course_info')->nullable();
+            $table->string('Course_status')->nullable();
+            $table->integer('CourseRating')->nullable();
+            $table->integer('MentorRating')->nullable();
             $table->text('Additional_Feedback')->nullable();
-            $table->integer('Mentor_Fee');
-            $table->integer('Course_materialsFee');
+            $table->integer('Mentor_Fee')->nullable();
+            $table->integer('Course_materialsFee')->nullable();
 
 
         });
