@@ -83,6 +83,14 @@ body{
   border-radius: 50%;
 }
 
+.uploadcare--widget__button_type_cancel .uploadcare--widget__button_type_remove{
+    display: none;
+}
+
+.uploadcare--widget__file-name, .uploadcare--widget__file-size {
+    display: inline;
+}
+
 /* Styles and stuff for the page */
 #preview {
   margin-top: 1rem;
@@ -105,16 +113,17 @@ h1 {
 <body>
 
 @php
+    // dd($memberData);
     $name = $memberData['name'];
     $email = $memberData['email'];
     $st_id = $memberData['student_id'];
     $dept = $memberData['department'];
     $dob = $memberData['dob'];
-    $phone = $memberData['phone'];
+    $phone = $memberData['phone_no'];
     $address = $memberData['address'];
-    $club_id = $memberData['Club_Id'];
-    $faculty_id = $memberData['Faculty_Id'];
-    $level = $memberData['Level'];
+    $club_id = $memberData['club_id'];
+    $faculty_id = $memberData['faculty_id'];
+    $level = $memberData['level'];
     $picture= $memberData['picture'];
     $panel_role = $memberData['panel_role'];
     $committe_name= $memberData['committe_name'];
@@ -138,18 +147,25 @@ h1 {
                     <div class="card-body">
 
                          <script>
-                            UPLOADCARE_PUBLIC_KEY = "demopublickey";
+                            UPLOADCARE_PUBLIC_KEY = "a51f2657278fde93b5e2";
+                            UPLOADCARE_EFFECTS = 'crop';
+                            UPLOADCARE_IMAGES_ONLY = true;
+                            UPLOADCARE_PREVIEW_STEP = true;
+                            UPLOADCARE_CLEARABLE = true;
                         </script>
                         <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
-                        
+                        <script src="https://ucarecdn.com/libs/widget-tab-effects/1.x/uploadcare.tab-effects.js"></script>
                        
+                        <form action="/upload/{{$club_id}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <img src="{{$picture}}" alt="" id="preview" width=300 height=300 />
+                            <br><br>
+                            <input type="hidden" name="picture" role="uploadcare-uploader" data-crop="1:1" data-images-only>
+                            <!-- Your preview will be put here -->
+                            <input class="btn btn-success btn-sm" type="submit" value="Save" style="display: inline-block">
+                        </form>
+
                         <!-- The input element below will turn into the widget -->
-                        <input type="hidden" role="uploadcare-uploader" data-crop="1:1" data-images-only>
-                        <!-- Your preview will be put here -->
-                        <div>
-                            <img src="" alt="" id="preview" width=300 height=300 />
-                        </div>
-                        
                     </div>
                 </div>
                 <div class="card mt-3">
@@ -215,6 +231,12 @@ h1 {
                 <div class="card mb-3">
                     <div class="card-body">
                         <form action="" method="post">
+                        @if(Session::get('success'))
+                        <div class="alert alert-success">
+                            {{ Session::get('success') }}
+                        </div>
+                        @endif
+                        @csrf
                         <div class="row">
                             <p>GENERAL INFORMATION</p>
                             <div class="col-sm-3">
@@ -230,17 +252,14 @@ h1 {
                         </div>
                         <hr>
 
-
-
+                        <br>
                         <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Student ID</h6>
                             </div>
-                            <!-- <div class="col-sm-9 text-secondary">
-                                201914021
-                            </div> -->
                             <div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" value="{{$st_id}}" name = "student_id">
+                                <span class="text-danger">@error('student_id'){{ $message }} @enderror</span>
                             </div>
                         </div>
                         <br>
@@ -274,9 +293,6 @@ h1 {
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Department</h6>
                             </div>
-                            {{-- <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" value="" name = "department">
-                            </div> --}}
                             @php
                             $all_depts = [
                                 "CSE" => "Computer Science and Engineering", 
@@ -291,9 +307,6 @@ h1 {
                                 "ARCHITECTURE" => "Architecture",
                                 "PME" => "Petroleum & Mining Engineering"
                             ];
-                            // foreach (array_keys($all_depts) as $dept_name) {
-                            //     echo $dept_name;
-                            // }
                             @endphp
                             <div class="col-sm-9 text-secondary">
                                 <select name="department" class="form-control">
@@ -313,6 +326,7 @@ h1 {
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" value="{{$level}}" name = "level">
+                                <span class="text-danger">@error('level'){{ $message }} @enderror</span>
                             </div>
                         </div>
                       
@@ -324,18 +338,12 @@ h1 {
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Email</h6>
                             </div>
-                            <!-- <div class="col-sm-9 text-secondary">
-                                siri@gamil.com
-                            </div> -->
                             <div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" value="{{$email}}" name = "email">
+                                <span class="text-danger">@error('email'){{ $message }} @enderror</span>
                             </div>
                         </div>
                         <hr>
-
-
-
-                        
                         <div class="row mb-3">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Phone</h6>
@@ -355,22 +363,12 @@ h1 {
                             </div>
                         </div>
                         <hr>
-                        {{-- <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Assigned Work</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" value="" name = "assigned_work">
-                            </div>
-                        </div>
-                       
-                        <hr> --}}
                         <div class="row mb-3">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Old Password</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="password" class="form-control" value="">
+                                <input type="password" class="form-control" value="" name="old_password">
                             </div>
                         </div>
                         <hr>
@@ -379,7 +377,7 @@ h1 {
                                 <h6 class="mb-0">New Password</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="password" class="form-control" value="">
+                                <input type="password" class="form-control" value="" name="new_password">
                             </div>
                         </div>
                         <hr>
@@ -388,68 +386,23 @@ h1 {
                                 <h6 class="mb-0">Confirm New Password</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="password" class="form-control" value="">
+                                <input type="password" class="form-control" value="" name="confirm_new_password">
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-12">
-                                <a class="btn btn-info " target="__blank"
-                                    href="#">Save</a>
+                                <button type="submit" class="btn btn-info" href="{{route('member.profile.update')}}">Save</button>
                                 <a class="btn btn-info " href="{{route('auth.logout')}}">Log out</a>
                             </div>
                         </div>
                     </form>
                     </div>
                 </div>
-
-
-
-                {{-- <div class="row gutters-sm">
-                    <div class="col-sm-6 mb-3">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h6 class="d-flex align-items-center mb-3"><i
-                                        class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                                <small>Web Design</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 80%"
-                                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>Website Markup</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 72%"
-                                        aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>One Page</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 89%"
-                                        aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>Mobile Template</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 55%"
-                                        aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>Backend API</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 66%"
-                                        aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div> --}}
-
-
-
             </div>
         </div>
-
     </div>
 </div>
-   
 
 <script>
     // Getting an instance of the widget.
