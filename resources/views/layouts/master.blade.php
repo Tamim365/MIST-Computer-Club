@@ -8,26 +8,26 @@
     <link type="image/x-icon" href="{{URL::asset('home/assets/img/favicon.ico')}}">     
     <!-- CSS Here -->
     <!-- MagnificPopup.css -->
-    <link rel="stylesheet" href="{{URL::asset('home/assets/css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/magnific-popup.css')}}">
     <!-- SlickNav.css -->
-    <link rel="stylesheet" href="{{URL::asset('home/assets/css/slicknav.min.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/slicknav.min.css')}}">
     <!-- Owl.carousel.css -->
-    <link rel="stylesheet" href="{{URL::asset('home/assets/css/owl.carousel-2.3.4.min.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/owl.carousel-2.3.4.min.css')}}">
     <!-- Fontawesome.css -->
-    <link rel="stylesheet" href="{{URL::asset('home/assets/css/fontawesome-free-5.12.0.min.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/fontawesome-free-5.12.0.min.css')}}">
     <!-- Bootstrap.css -->
-    <link rel="stylesheet" href="{{URL::asset('home/assets/css/bootstrap-4.3.1.min.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/bootstrap-4.3.1.min.css')}}">
     <!-- Default.css -->
-    <link rel="stylesheet" href="{{URL::asset('home/assets/css/default.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/default.css')}}">
     <!-- Style.css -->
     <link rel="stylesheet" href="{{URL::asset('css/nav_footer.css')}}">  
     <!-- Responsive.css -->
-    <link rel="stylesheet" href="{{URL::asset('home/assets/css/responsive.css')}}">  
+    <link rel="stylesheet" href="{{URL::asset('css/responsive.css')}}">  
     <!-- ColorNip.css -->
-    <link rel="stylesheet" href="{{URL::asset('home/assets/css/colornip.min.css')}}">
-    <link id="theme" rel="stylesheet" href="{{URL::asset('home/assets/css/theme-colors/theme-default.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/colornip.min.css')}}">
+    <link id="theme" rel="stylesheet" href="{{URL::asset('css/theme-colors/theme-default.css')}}">
     <!-- Jquery -->
-    <script src="{{URL::asset('home/assets/js/jquery-3.4.1.min.js')}}"></script>
+    <script src="{{URL::asset('js/jquery-3.4.1.min.js')}}"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     @yield('header')
@@ -170,27 +170,27 @@
     <!-- End Copyright Area -->
     <!-- JS -->
     <!-- Popper.js -->
-    <script src="{{URL::asset('Home/assets/js/popper.min.js')}}"></script>
+    <script src="{{URL::asset('js/popper.min.js')}}"></script>
     <!-- Bootstrap.js -->
-    <script src="{{URL::asset('Home/assets/js/bootstrap-4.3.1.min.js')}}"></script>
+    <script src="{{URL::asset('js/bootstrap-4.3.1.min.js')}}"></script>
     <!-- Modernizr.js -->
-    <script src="{{URL::asset('Home/assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
+    <script src="{{URL::asset('js/vendor/modernizr-3.5.0.min.js')}}"></script>
     <!-- Owl.Carousel.js -->
-    <script src="{{URL::asset('Home/assets/js/vendor/owl.carousel-2.3.4.min.js')}}"></script>
-    <script src="{{URL::asset('Home/assets/js/vendor/owl.carousel2.thumbs.min.js')}}"></script>
+    <script src="{{URL::asset('js/vendor/owl.carousel-2.3.4.min.js')}}"></script>
+    <script src="{{URL::asset('js/vendor/owl.carousel2.thumbs.min.js')}}"></script>
     <!-- Waypoints.js -->
-    <script src="{{URL::asset('Home/assets/js/vendor/waypoints-4.0.1.min.js')}}"></script>
+    <script src="{{URL::asset('js/vendor/waypoints-4.0.1.min.js')}}"></script>
     <!-- ColorNip.js -->
-    <script src="{{URL::asset('Home/assets/js/vendor/colornip.min.js')}}"></script>
+    <script src="{{URL::asset('js/vendor/colornip.min.js')}}"></script>
     <!-- SlickNav.js -->
-    <script src="{{URL::asset('Home/assets/js/vendor/slicknav.min.js')}}"></script>
+    <script src="{{URL::asset('js/vendor/slicknav.min.js')}}"></script>
     <!-- ScrollUp.js -->
-    <script src="{{URL::asset('Home/assets/js/vendor/jquery.scrollUp.min.js')}}"></script>
+    <script src="{{URL::asset('js/vendor/jquery.scrollUp.min.js')}}"></script>
     <!-- MagnificPopup.js -->
-    <script src="{{URL::asset('Home/assets/js/vendor/magnific-popup.min.js')}}"></script>
+    <script src="{{URL::asset('js/vendor/magnific-popup.min.js')}}"></script>
 
     <!-- Main.js -->
-    <script src="{{URL::asset('Home/assets/js/main.js')}}"></script>
+    <script src="{{URL::asset('js/main.js')}}"></script>
 </body>
 </html>
 
