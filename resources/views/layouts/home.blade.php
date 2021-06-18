@@ -1,3 +1,18 @@
+<!-- Color Nip -->
+<div class="Switcher">
+    <button id="Switcher__control" class="Switcher__control">
+        <i class="fas fa-cogs"></i>
+    </button>
+    <h5 style="margin-bottom: 5px">Change Color</h5>
+    <ul id="colors" data-dir="Home/assets/css/theme-colors/">
+        <li data-scheme="theme-default" data-color="#4272d7" style="background-color:#4272d7"></li>
+        <li data-scheme="theme-red" data-color="#fa4251" style="background-color:#fa4251"></li>
+        <li data-scheme="theme-green" data-color="#63c76a" style="background-color:#63c76a"></li>
+        <li data-scheme="theme-yellow" data-color="#ffe048" style="background-color:#ffe048"></li>
+        <li data-scheme="theme-orange" data-color="#f39c12" style="background-color:#f39c12"></li>
+    </ul>
+    </div>
+<!-- End Color Nip -->
 <!-- Start Slider Area -->
 <div class="slider-area ">
     <div class="container-fluid p-0">

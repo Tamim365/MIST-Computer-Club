@@ -1,12 +1,10 @@
-<!doctype html>
-<html>
-<head>
-   @include('layouts.header')
-</head>
-<body>
-    @include('layouts.nav')
-    @include('layouts.home')
-    @include('layouts.footer')
-</body>
-</html>
+@extends('layouts.master')
 
+@section('header')
+    <link rel="stylesheet" href="{{URL::asset('home/assets/css/style.css')}}">
+    <title>MIST Computer Club</title>
+@endsection
+
+@section('content')
+    @include('layouts.home')
+@endsection

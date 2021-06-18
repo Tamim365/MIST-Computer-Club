@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('home/index');
-});
+})->name('/');
 
 Route::view('Registration', 'Registration');
 
