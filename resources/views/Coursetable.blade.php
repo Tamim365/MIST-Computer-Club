@@ -17,7 +17,7 @@
 </head>
 <body>
   <div style="display:flex ; align-content:center;">
-    <h1 >Team Table</h1>
+    <h1 >Course Table</h1>
 
     <div class="w3-container" style="display: inline-block; margin-top:20px">
       <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-green w3-round">Add Course</button>
