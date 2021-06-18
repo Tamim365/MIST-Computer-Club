@@ -20,13 +20,12 @@ class CreateCoursesTable extends Migration
             $table->date('Start_Date')->nullable();
             $table->date('End_Date')->nullable();
             $table->text('Course_info')->nullable();
-            $table->string('Course_status')->nullable();
+            $table->string('Course_status')->default('Running');
             $table->integer('CourseRating')->nullable();
             $table->integer('MentorRating')->nullable();
             $table->text('Additional_Feedback')->nullable();
             $table->integer('Mentor_Fee')->nullable();
             $table->integer('Course_materialsFee')->nullable();
-
 
         });
     }
