@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ClubBudgets extends Migration
+class CreateBudgetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class ClubBudgets extends Migration
      */
     public function up()
     {
-        Schema::create('club_budgets', function (Blueprint $table) {
+        Schema::create('budgets', function (Blueprint $table) {
             $table->increments('Budget_Id');
-            $table->string('Budget_Amount')->nullable();
-            $table->string('Budget_Remain')->nullable();
+            $table->integer('Budget_Amount')->nullable();
+            $table->integer('Budget_Remain')->nullable()->default(0);
             $table->string('Budget_Proposal_Info')->nullable();
             $table->date('Budget_Transaction_Date')->nullable();
             $table->string('Remarks')->nullable();
-            
-
         });
     }
 
@@ -32,6 +30,6 @@ class ClubBudgets extends Migration
      */
     public function down()
     {
-       Schema::dropIfExists('courses');
+        Schema::dropIfExists('budgets');
     }
 }

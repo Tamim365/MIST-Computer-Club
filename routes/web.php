@@ -6,6 +6,11 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseTable;
+use App\Http\Controllers\BudgetController;
+use App\Http\Controllers\BudgetTable;
+use App\Http\Controllers\MyAdminController;
+use App\Http\Controllers\AdminTable;
+
 
 use Illuminate\Http\Request;
 
@@ -33,9 +38,30 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/member/profile',[AuthController::class, 'member_profile']);
 
 });
-Route::post('submit',[CourseController::class,'save']);
-Route::post('update/{id}',[CourseController::class,'update']);
-Route::post('delete/{id}',[CourseController::class,'delete']);
+Route::post('submit_course',[CourseController::class,'save']);
+Route::post('update_course/{id}',[CourseController::class,'update']);
+Route::post('delete_course/{id}',[CourseController::class,'delete']);
 Route::get('courses',[CourseTable::class,'index']);
+
+
+Route::get('budgets',[BudgetTable::class,'index']);
+Route::post('submit_budget',[BudgetController::class,'save']);
+Route::post('update_budget/{id}',[BudgetController::class,'update']);
+Route::post('delete_budget/{id}',[BudgetController::class,'delete']);
+
+
+Route::get('admins',[AdminTable::class,'index']);
+Route::post('submit_ad',[MyAdminController::class,'save']);
+Route::post('update_admin/{id}',[MyAdminController::class,'update']);
+Route::post('delete_admin/{id}',[MyAdminController::class,'delete']);
+
+
+
+
+
+
+
+
+
 
 

@@ -17,10 +17,10 @@
 </head>
 <body>
   <div style="display:flex ; align-content:center;">
-    <h1 >Course Table</h1>
+    <h1 >Budget Table</h1>
 
     <div class="w3-container" style="display: inline-block; margin-top:20px">
-      <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-green w3-round">Add Course</button>
+      <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-green w3-round">Add Budget</button>
 
       <div id="id02" class="w3-modal">
         <div class="w3-modal-content w3-animate-zoom">
@@ -31,24 +31,27 @@
           </header> -->
           <span onclick="document.getElementById('id02').style.display='none'"
             class="w3-button w3-display-topright">&times;</span>
-          <form id="contact" action="submit_course" method="post">
+
+
+
+          <form id="contact" action="submit_budget" method="post">
             @csrf
-            <h3> New Course Registration </h3><br>
+            <h3> New Budget Allocation </h3><br>
             <fieldset>
-              <input placeholder="Course Name" type="text" name="Course_name" tabindex="1" required autofocus>
+              <input placeholder="Budget Amount" type="text" name="Budget_Amount" tabindex="1" required autofocus>
             </fieldset>
             <fieldset>
-              <label for="birthday">Start Date:</label>
-              <input  placeholder="Your Email Address" type="date" name="start" tabindex="2" required>
+              <label for="birthday">Budget Transaction Date</label>
+              <input  type="date" name="Budget_Transaction_Date" tabindex="2" required>
             </fieldset>
             <fieldset>
-              <textarea placeholder="Course Description" name="info" tabindex="5" required></textarea>
+              <textarea placeholder="Budget Proposal Info" name="Budget_Proposal_Info" tabindex="5" required></textarea>
             </fieldset>
             <fieldset>
-              <input placeholder="Mentor Fee" type="text" name="mentor_fee" tabindex="4" required autofocus>
+              <input placeholder="Budget Remain" type="text" name="Budget_Remain" tabindex="4" required autofocus>
             </fieldset>
             <fieldset>
-              <input placeholder="Course Materials Fee" type="text" name="mat_fee" tabindex="4" required autofocus>
+              <input placeholder="Remarks" type="text" name="remarks" tabindex="4" required autofocus>
             </fieldset>
             <fieldset>
               <button type="submit">Submit</button>
@@ -69,22 +72,24 @@
 <table class="responstable">
 
   <tr>
-    <th>Course Id</th>
-    <th ><span>Course Name</span></th>
-    <th>Start Date</th>
-    <th>Status</th>
-    <th>Decription</th>
+    <th>Budget Id</th>
+    <th >Budget Amount</th>
+    <th>Budget Transaction Date</th>
+    <th>Budget Remain</th>
+    <th>Remarks</th>
+    <th>Action</th>
   </tr>
 
   <tr>
       @foreach ($send as $row )
     @php
-        $course_id = $row['course_id'];
+        $budget_id = $row['budget_id'];
     @endphp
-    <td>{{ $row['course_id'] }}</td>
-    <td>{{ $row['course_name'] }}</td>
-    <td>{{ date('d-m-Y', strtotime($row['start_date']))}}</td>
-    <td>{{ $row['course_status'] }}</td>
+    <td>{{ $row['budget_id'] }}</td>
+    <td>{{ $row['budget_amount'] }}</td>
+    <td>{{ date('d-m-Y', strtotime($row['budget_transaction_date']))}}</td>
+    <td>{{ $row['budget_remain'] }}</td>
+    <td>{{ $row['remarks'] }}</td>
     <td >
       <div class="w3-container" style="display: inline-block;">
         <button onclick="document.getElementById('{{ $i }}').style.display='block'" class="w3-button w3-green w3-round">View</button>
@@ -99,7 +104,7 @@
             <div class="w3-container">
               {{-- <p>Some text..</p>
               <p>Some text..</p> --}}
-              {{ $row['course_info'] }}
+              {{ $row['budget_proposal_info'] }}
             </div>
             <footer class="w3-container w3-teal">
               <p>Modal Footer</p>
@@ -120,42 +125,38 @@
             </header> -->
             <span onclick="document.getElementById('{{ $j }}').style.display='none'"
               class="w3-button w3-display-topright">&times;</span>
-            <form id="contact" action="update_course/{{ $course_id }}" method="post">
+            <form id="contact" action="update_budget/{{ $budget_id }}" method="post">
               @csrf
-              <h3> Update Course</h3><br>
+              <h3> Update Budget</h3><br>
               <fieldset>
-                <label for="">Course Name: </label>
-                <input placeholder="Course Name" type="text" name="Course_name" tabindex="1" value="{{  $row['course_name']  }}" >
+                <label for="">Budget Amount: </label>
+                <input placeholder="Budget Amount" type="text" name="Budget_Amount" tabindex="1" value="{{  $row['budget_amount'] }}" >
               </fieldset>
               <br>
               <fieldset>
-                <label for="">Start Date:</label>
+                <label for="">Budget Transaction Date</label>
                 @php
-                 $date = date('Y-m-d', strtotime($row['start_date']));
+                 $date = date('Y-m-d', strtotime($row['budget_transaction_date']));
                 @endphp
-                <input  type="date" name="start" tabindex="2" value={{ $date }}>
+                <input  type="date" name="Budget_Transaction_Date" tabindex="2" value={{ $date }}>
               </fieldset>
               <br>
               <fieldset>
-                <label for="">End Date:</label>
-                <input  type="date" name="end" tabindex="2" >
+                <label for="">Budget Remain:</label>
+                <input  type="text" name="Budget_Remain" tabindex="2" >
               </fieldset>
               <br>
               <fieldset>
-                 <label for="hello">Course Status:</label>
-                <input placeholder="Course Status" type="text" name="status" tabindex="1" value="{{  $row['course_status'] }}">
+                 <label for="hello">Remarks:</label>
+                <input placeholder="Remarks" type="text" name="remarks" tabindex="1" value="{{  $row['remarks'] }}">
               </fieldset>
               <br>
-              <fieldset>
-                 <label for="">Materials Fee: </label>
-                <input placeholder="Course Materials Fee" type="text" name="mat_fee" tabindex="4" value="{{ $row['course_materialsfee'] }}" >
-              </fieldset>
-              <br>
+              
               <fieldset>
                 <button type="submit">Submit</button>
               </fieldset>
               <fieldset>
-                <button type="submit" class="w3-red" formaction="delete_course/{{ $course_id }}">Delete Record</button>
+                <button type="submit" class="w3-red" formaction="delete_budget/{{ $budget_id }}">Delete Record</button>
               </fieldset>
 
             </form>
