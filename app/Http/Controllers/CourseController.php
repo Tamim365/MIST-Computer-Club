@@ -47,4 +47,9 @@ class CourseController extends Controller
         return redirect()->back();
 
     }
+
+    function index(){
+        $all_courses = Course::all();
+        return view('course/index', ['all_courses'=>$all_courses]);
+    }
 }
