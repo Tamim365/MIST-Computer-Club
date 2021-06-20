@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Budget extends Model
 {
-protected $table ='budgets';
-   public $incrementing = false;
+    protected $table ='budgets';
+    protected $primaryKey = 'budget_id';
+   public $incrementing = true;
    public $timestamps = false;
     // protected $table = 'admins';
 
-    protected $primaryKey = 'Budget_Id';
     use HasFactory;
 }
