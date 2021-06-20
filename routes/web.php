@@ -50,6 +50,7 @@ Route::post('update_course/{id}',[CourseController::class,'update']);
 Route::post('delete_course/{id}',[CourseController::class,'delete']);
 Route::get('courses',[CourseTable::class,'index']);
 //Route::get('courses',[CourseTable::class,'index']);
+Route::post('/course/enroll', [CourseController::class, 'enroll_as_participant'])->name('course.enroll.participant');
 
 
 Route::get('budgets',[BudgetTable::class,'index']);

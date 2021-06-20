@@ -16,8 +16,8 @@ class MemberController extends Controller
         return view('member/index',['member'=>$member, 'table_name'=>$table_name]);
     }
     function member_profile(){
-        $data = ['memberData'=>Member::where('email','=', session('LoggedUser'))->first()];
-        // dd($data);
+        $member = session('LoggedUser')[0];
+        $data = ['memberData'=>Member::where('club_id','=', $member->club_id)->first()];
         return view('member.profile', $data);
     }
     public function update(Request $request)

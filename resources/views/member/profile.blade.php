@@ -19,8 +19,8 @@ $(function () {
 @section('content')
 
 @php
-$x = session()->all();
-// dd($x['LoggedUser']);
+// $x = session('LoggedUser')[0];
+// dd($x->club_id);
 // dd($memberData);
 $name = $memberData['name'];
 $email = $memberData['email'];

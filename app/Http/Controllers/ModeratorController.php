@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class ModeratorController extends Controller
 {
     function moderator_profile(){
-        $data = ['moderatorData'=>Moderator::where('email','=', session('LoggedUser'))->first()];
+        $moderator = session('LoggedUser')[0];
+        $data = ['moderatorData'=>Moderator::where('email','=', $moderator->faculty_id)->first()];
         // dd($data);
         return view('moderator.profile', $data);
     }

@@ -82,4 +82,15 @@ class CourseController extends Controller
         $all_courses = Course::all();
         return view('course/index', ['all_courses'=>$all_courses]);
     }
+
+    function enroll_as_participant(Request $request)
+    {
+        $member = session('LoggedUser')[0];
+        DB::table('enrolls')->insert([
+            'club_id' => $member->club_id,
+            'course_id' => $request->course_id,
+            'participation_role' => 'Participant'
+        ]);
+        return redirect()->back();
+    }
 }
