@@ -54,7 +54,7 @@ $committe_name= $memberData['committe_name'];
                     <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
                     <script src="https://ucarecdn.com/libs/widget-tab-effects/1.x/uploadcare.tab-effects.js"></script>
                    
-                    <form action="/upload/{{$club_id}}" method="post" enctype="multipart/form-data">
+                    <form action="/upload/member/{{$club_id}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <img src="{{$picture}}" alt="" id="preview" width=300 height=300 />
                         <br><br>
