@@ -1,22 +1,18 @@
+@extends('layouts.master')
+@section('header')
+<link rel="stylesheet" href="css/team table.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css/form.css">
+    <title>Club Budgets</title>
+    
+@endsection
 
+@section('content')
 @php
     $i=1;
     $j='a';
 @endphp
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/team table.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="css/form.css">
-    <title></title>
-</head>
-<body>
-  <div style="display:flex ; align-content:center;">
+    <div style="display:flex ; align-content:center;">
     <h1 >Budget Table</h1>
 
     <div class="w3-container" style="display: inline-block; margin-top:20px">
@@ -295,6 +291,6 @@
   </tr> --}}
 
 </table>
+@endsection
 
-</body>
-</html>
+
