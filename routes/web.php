@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Route::view('Registration', 'Registration');
 Route::get('course-content', [CourseController::class, 'index']);
+Route::view('activities', 'activity');
 
 Route::post('/auth/save',[AuthController::class, 'save'])->name('auth.save');
 Route::post('/auth/check',[AuthController::class, 'check'])->name('auth.check');
