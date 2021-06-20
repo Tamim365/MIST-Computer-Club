@@ -88,3 +88,12 @@ body {
 	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 	color: white;
 }
+
+.checkmark {
+	display: inline-block;
+	transform: rotate(45deg);
+	height: 25px;
+	width: 12px; 
+	border-bottom: 7px solid #78b13f;
+	border-right: 7px solid #78b13f;
+  }

@@ -19,8 +19,8 @@ $(function () {
 @section('content')
 
 @php
-$x = session()->all();
-// dd($x['LoggedUser']);
+// $x = session('LoggedUser')[0];
+// dd($x->club_id);
 // dd($memberData);
 $name = $memberData['name'];
 $email = $memberData['email'];
@@ -54,7 +54,7 @@ $committe_name= $memberData['committe_name'];
                     <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
                     <script src="https://ucarecdn.com/libs/widget-tab-effects/1.x/uploadcare.tab-effects.js"></script>
                    
-                    <form action="/upload/{{$club_id}}" method="post" enctype="multipart/form-data">
+                    <form action="/upload/member/{{$club_id}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <img src="{{$picture}}" alt="" id="preview" width=300 height=300 />
                         <br><br>
@@ -71,12 +71,12 @@ $committe_name= $memberData['committe_name'];
 
                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                         <h5 class="mb-0">Panel Role</h5>
-                        <span class="text-secondary">SINGLE</span>
+                        <span class="text-secondary">{{$panel_role}}</span>
                     </li>
 
                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                         <h5 class="mb-0">Committee</h5>
-                        <span class="text-secondary">SINGLE</span>
+                        <span class="text-secondary">{{$committe_name}}</span>
                     </li>
                 </ul>
             </div>

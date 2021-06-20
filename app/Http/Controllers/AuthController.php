@@ -86,7 +86,7 @@ class AuthController extends Controller
                 return back()->with('fail','Incorrect Email or Password');
             }else{
                 if(Hash::check($request->password, $userInfo->password)){
-                    $request->session()->put('LoggedUser', [$userInfo->email, 'moderator']);
+                    $request->session()->put('LoggedUser', [$userInfo, 'moderator']);
                     return redirect('member/profile');
     
                 }else{
@@ -95,7 +95,7 @@ class AuthController extends Controller
             }
         } else{
             if(Hash::check($request->password, $userInfo->password)){
-                $request->session()->put('LoggedUser', [$userInfo->email, 'member']);
+                $request->session()->put('LoggedUser', [$userInfo, 'member']);
                 return redirect('member/profile');
 
             }else{

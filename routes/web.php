@@ -29,6 +29,7 @@ Route::get('/', function () {
 Route::view('Registration', 'Registration');
 Route::get('course-content', [CourseController::class, 'index']);
 Route::view('activities', 'activity');
+Route::view('community', 'community');
 
 Route::post('/auth/save/member',[AuthController::class, 'save_member'])->name('auth.save.member');
 Route::post('/auth/save/moderator',[AuthController::class, 'save_moderator'])->name('auth.save.moderator');
@@ -57,6 +58,7 @@ Route::post('update_course/{id}',[CourseController::class,'update']);
 Route::post('delete_course/{id}',[CourseController::class,'delete']);
 Route::get('courses',[CourseTable::class,'index'])->name('courses.table');
 //Route::get('courses',[CourseTable::class,'index']);
+Route::post('/course/enroll', [CourseController::class, 'enroll_as_participant'])->name('course.enroll.participant');
 
 //For Budgets
 Route::get('budgets',[BudgetTable::class,'index'])->name('budget.table');

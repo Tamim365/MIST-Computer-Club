@@ -29,7 +29,7 @@
                      <div class="box_text">
                          <H2>COURSES</H2>
                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-                         <a href="course-content">View Courses</a>
+                         <a href="{{url('/course-content')}}">View Courses</a>
                      </div>
                  </div> 
             </div>
@@ -65,7 +65,7 @@
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 border_right">
                     <div class="box_bg">
                         <div class="box_bg_img">
-                            <figure><img src="img/codewar1.jpg"></figure>
+                            <figure><img src="img/ncpc.jpg"></figure>
                         </div>
                     </div>
                 </div>
@@ -88,13 +88,13 @@
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <div class="box_bg">
                         <div class="box_bg_img">
-                            <figure><img src="img/ncpc.jpg"></figure>
+                            <figure><img src="img/uvcwin.jpg"></figure>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 border_right">
                     <div class="box_text">
-                        <H2>FESTS</H2>
+                        <H2>NEWS</H2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                             labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                             laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
@@ -110,7 +110,7 @@
         </div>
     </div>
 
-    <div id="software" class="We_are">
+    {{-- <div id="software" class="We_are">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -145,7 +145,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 
 

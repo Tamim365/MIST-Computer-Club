@@ -67,7 +67,7 @@
                             <ul class="main-menu" id="mobile-menu">
                                 <li><a href="{{route('/')}}">Home</a></li>
                                 <li><a href="#">About us</a></li>
-                                <li><a href="activities">Activities and News</a></li>
+                                <li><a href="{{url('/activities')}}">Activities and News</a></li>
                                 <li><a href="#">Community</a></li>
                                 <li><a href="#">Gallery</a></li>
                                 <li><a href="#">Contact Us</a></li>
