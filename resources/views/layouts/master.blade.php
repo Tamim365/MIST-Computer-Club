@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <!-- Favicon -->
-    <link type="image/x-icon" href="{{URL::asset('home/assets/img/favicon.ico')}}">     
+    <link rel="icon" href="{{URL::asset('favicon.png')}}">     
     <!-- CSS Here -->
     <!-- MagnificPopup.css -->
     <link rel="stylesheet" href="{{URL::asset('css/magnific-popup.css')}}">
@@ -67,7 +67,7 @@
                             <ul class="main-menu" id="mobile-menu">
                                 <li><a href="{{route('/')}}">Home</a></li>
                                 <li><a href="#">About us</a></li>
-                                <li><a href="#">Activities and News</a></li>
+                                <li><a href="activities">Activities and News</a></li>
                                 <li><a href="#">Community</a></li>
                                 <li><a href="#">Gallery</a></li>
                                 <li><a href="#">Contact Us</a></li>

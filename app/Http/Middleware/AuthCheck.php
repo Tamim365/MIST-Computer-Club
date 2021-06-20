@@ -23,6 +23,12 @@ class AuthCheck
         if(session()->has('LoggedUser') && ($request->path() == 'auth/login' || $request->path() == 'auth/register' ) ){
             return back();
         }
+        if(session()->has('LoggedUser'))
+        {
+            $userType = session()->all()['LoggedUser'][1];
+            if($userType == 'member' && $request->path() == 'moderator/profile') return redirect('member/profile');
+            if($userType == 'moderator' && $request->path() == 'member/profile') return redirect('moderator/profile');
+        }
         return $next($request)->header('Cache-Control','no-cache, no-store, max-age=0, must-revalidate')
                               ->header('Pragma','no-cache')
                               ->header('Expires','Sat 01 Jan 1990 00:00:00 GMT');
