@@ -37,7 +37,6 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
     Route::get('/auth/logout',[AuthController::class, 'logout'])->name('auth.logout');
     Route::get('/member/profile',[MemberController::class, 'member_profile'])->name('member.profile');
-
 });
 Route::post('submit_course',[CourseController::class,'save']);
 Route::post('update_course/{id}',[CourseController::class,'update']);
