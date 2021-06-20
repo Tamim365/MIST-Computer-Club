@@ -20,7 +20,7 @@ $(function () {
 
 @php
 // $x = session('LoggedUser')[0];
-// dd($x->club_id);
+// dd($x);
 // dd($memberData);
 $name = $memberData['name'];
 $email = $memberData['email'];
