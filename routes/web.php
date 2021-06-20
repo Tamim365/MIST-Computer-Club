@@ -42,6 +42,7 @@ Route::post('submit_course',[CourseController::class,'save']);
 Route::post('update_course/{id}',[CourseController::class,'update']);
 Route::post('delete_course/{id}',[CourseController::class,'delete']);
 Route::get('courses',[CourseTable::class,'index']);
+//Route::get('courses',[CourseTable::class,'index']);
 
 
 Route::get('budgets',[BudgetTable::class,'index']);
@@ -54,6 +55,7 @@ Route::get('admins',[AdminTable::class,'index']);
 Route::post('submit_ad',[MyAdminController::class,'save']);
 Route::post('update_admin/{id}',[MyAdminController::class,'update']);
 Route::post('delete_admin/{id}',[MyAdminController::class,'delete']);
+
 
 
 

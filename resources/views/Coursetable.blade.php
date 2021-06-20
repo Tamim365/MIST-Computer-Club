@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="css/form.css">
     <title>Courses</title>
-    
+
 @endsection
 
 @section('content')
@@ -39,6 +39,9 @@
             </fieldset>
             <fieldset>
               <textarea placeholder="Course Description" name="info" tabindex="5" required></textarea>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Budget ID" type="text" name="budget_id" tabindex="4" autofocus>
             </fieldset>
             <fieldset>
               <input placeholder="Mentor Fee" type="text" name="mentor_fee" tabindex="4" required autofocus>
@@ -137,6 +140,11 @@
                 <input  type="date" name="end" tabindex="2" >
               </fieldset>
               <br>
+              <fieldset>
+                <label for="hello">Budget Id:</label>
+                <input placeholder="Budget ID" type="text" name="budget_id" tabindex="4" autofocus value="{{ $row['budget_id'] }}">
+            </fieldset>
+            <br>
               <fieldset>
                  <label for="hello">Course Status:</label>
                 <input placeholder="Course Status" type="text" name="status" tabindex="1" value="{{  $row['course_status'] }}">

@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="css/form.css">
     <title>Club Budgets</title>
-    
+
 @endsection
 
 @section('content')
@@ -44,10 +44,10 @@
               <textarea placeholder="Budget Proposal Info" name="Budget_Proposal_Info" tabindex="5" required></textarea>
             </fieldset>
             <fieldset>
-              <input placeholder="Budget Remain" type="text" name="Budget_Remain" tabindex="4" required autofocus>
+              <input placeholder="Budget Remain" type="text" name="Budget_Remain" tabindex="4"  autofocus>
             </fieldset>
             <fieldset>
-              <input placeholder="Remarks" type="text" name="remarks" tabindex="4" required autofocus>
+              <input placeholder="Remarks" type="text" name="remarks" tabindex="4"  autofocus>
             </fieldset>
             <fieldset>
               <button type="submit">Submit</button>
@@ -147,7 +147,7 @@
                 <input placeholder="Remarks" type="text" name="remarks" tabindex="1" value="{{  $row['remarks'] }}">
               </fieldset>
               <br>
-              
+
               <fieldset>
                 <button type="submit">Submit</button>
               </fieldset>

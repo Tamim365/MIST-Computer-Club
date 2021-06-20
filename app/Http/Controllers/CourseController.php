@@ -12,13 +12,28 @@ class CourseController extends Controller
     function save(Request $req){
        //print_r($req->input());
 
-         $course =new Course;
+       if($req->filled('budget_id')){
+        $course =new Course;
+         $course->budget_id = (int)$req->budget_id;
          $course->course_name = $req->Course_name;
          $course->start_date=$req->start;
          $course->course_info = $req->info;
          $course->mentor_fee= (int)$req->mentor_fee;
          $course->course_materialsfee = (int)$req->mat_fee;
          $course->save();
+       }
+       else{
+        $course =new Course;
+        // $course->budget_id = (int)$req->budget_id;
+         $course->course_name = $req->Course_name;
+         $course->start_date=$req->start;
+         $course->course_info = $req->info;
+         $course->mentor_fee= (int)$req->mentor_fee;
+         $course->course_materialsfee = (int)$req->mat_fee;
+         $course->save();
+       }
+
+
 
          $send = Course::all()->toArray();
          //return view('Coursetable',compact('send'));
@@ -27,7 +42,21 @@ class CourseController extends Controller
     }
     function update(Request $req,$id){
 
-        $file = DB::table('courses')
+        if($req->filled('budget_id')){
+            $file = DB::table('courses')
+                ->where('course_id',$id)
+                ->update(
+                    ['course_name' => $req->Course_name,
+                    'start_date' => $req->start,
+                    'end_date' => $req->end,
+                    'course_status' => $req->status,
+                    'course_materialsfee' => $req->mat_fee,
+                    'budget_id' => $req->budget_id]
+
+                );
+        }
+        else{
+            $file = DB::table('courses')
                 ->where('course_id',$id)
                 ->update(
                     ['course_name' => $req->Course_name,
@@ -37,6 +66,7 @@ class CourseController extends Controller
                     'course_materialsfee' => $req->mat_fee]
 
                 );
+        }
                 return redirect()->back();
 
 
