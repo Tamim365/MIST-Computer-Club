@@ -71,12 +71,12 @@ $committe_name= $memberData['committe_name'];
 
                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                         <h5 class="mb-0">Panel Role</h5>
-                        <span class="text-secondary">SINGLE</span>
+                        <span class="text-secondary">{{$panel_role}}</span>
                     </li>
 
                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                         <h5 class="mb-0">Committee</h5>
-                        <span class="text-secondary">SINGLE</span>
+                        <span class="text-secondary">{{$committe_name}}</span>
                     </li>
                 </ul>
             </div>
