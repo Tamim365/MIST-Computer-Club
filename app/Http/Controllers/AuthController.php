@@ -55,7 +55,7 @@ class AuthController extends Controller
             return back()->with('fail','Incorrect Email or Password');
         }else{
             if(Hash::check($request->password, $userInfo->password)){
-                $request->session()->put('LoggedUser', $userInfo->email);
+                $request->session()->put('LoggedUser', [$userInfo->email, 'member']);
                 return redirect('member/profile');
 
             }else{
