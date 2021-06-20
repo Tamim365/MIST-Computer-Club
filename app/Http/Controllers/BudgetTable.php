@@ -10,7 +10,7 @@ class BudgetTable extends Controller
     public function index(){
 
         $send = Budget::all()->toArray();
-        return view('Budget',compact('send'));
+        return view('budgettable',compact('send'));
 
     }
 }

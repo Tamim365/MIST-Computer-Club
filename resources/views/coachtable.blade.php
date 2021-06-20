@@ -8,7 +8,7 @@ $j='a';
 <html lang="en">
 
 <head>
-    <title> Course Table</title>
+    <title> Coach Table</title>
     <meta name="description" content="DataTables | Nura Admin">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,6 +57,7 @@ $j='a';
             <nav class="navbar-custom">
 
                 <ul class="list-inline float-right mb-0">
+
 
 
                     <li class="list-inline-item dropdown notif">
@@ -148,7 +149,7 @@ $j='a';
                             </ul>
                         </li> --}}
                         <li class="submenu ">
-                            <a href="{{ route('courses.table') }}" class="active">
+                            <a href="{{ route('courses.table') }}" >
                                 <i class="fab fa-leanpub"></i>
                                 <span> Courses </span>
                             </a>
@@ -160,7 +161,7 @@ $j='a';
                             </a>
                         </li>
                         <li class="submenu ">
-                            <a href="{{ route('coach.table') }}" >
+                            <a href="{{ route('coach.table') }}"  class="active" >
                                 <i class="fas fa-chalkboard-teacher"></i>
                                 <span> Coach </span>
                             </a>
@@ -204,10 +205,10 @@ $j='a';
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="breadcrumb-holder">
-                                <h1 class="main-title float-left">Course Tables</h1>
+                                <h1 class="main-title float-left">Coach Tables</h1>
                                 <ol class="breadcrumb float-right">
                                     <li class="breadcrumb-item">Home</li>
-                                    <li class="breadcrumb-item active">Course Tables</li>
+                                    <li class="breadcrumb-item active">Coach Tables</li>
                                 </ol>
                                 <div class="clearfix"></div>
                             </div>
@@ -220,7 +221,7 @@ $j='a';
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="card mb-3">
                                 <div class="card-header">
-                                    <h3><i class="fas fa-table"></i> All Courses Going On</h3>
+                                    <h3><i class="fas fa-table"></i> Coaches </h3>
 
                                 </div>
 
@@ -228,7 +229,7 @@ $j='a';
                                     <div style="display:flex ; align-content:center;">
 
                                         <div class="w3-container" style="display: inline-block; margin-top:20px">
-                                          <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-green w3-round">Add Course</button>
+                                          <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-green w3-round">Add Coach</button>
 
                                           <div id="id02" class="w3-modal">
                                             <div class="w3-modal-content w3-animate-zoom">
@@ -239,28 +240,27 @@ $j='a';
                                               </header> -->
                                               <span onclick="document.getElementById('id02').style.display='none'"
                                                 class="w3-button w3-display-topright">&times;</span>
-                                              <form id="contact" action="submit_course" method="post">
+                                              <form id="contact" action="submit_coach" method="post">
                                                 @csrf
-                                                <h3> New Course Registration </h3><br>
+                                                <h3> New Coach Registration </h3><br>
                                                 <fieldset>
-                                                  <input placeholder="Course Name" type="text" name="Course_name" tabindex="1" required autofocus>
+                                                  <input placeholder="Coach Name" type="text" name="coach_name" tabindex="1" required autofocus>
                                                 </fieldset>
                                                 <fieldset>
-                                                  <label for="birthday">Start Date:</label>
-                                                  <input  placeholder="Your Email Address" type="date" name="start" tabindex="2" required>
+                                                    <input placeholder="Address" type="text" name="coach_address" tabindex="1" required autofocus>
+                                                  </fieldset>
+
+
+
+                                                <fieldset>
+                                                  <input placeholder="University" type="text" name="coach_university" tabindex="4" required autofocus>
                                                 </fieldset>
                                                 <fieldset>
-                                                  <textarea placeholder="Course Description" name="info" tabindex="5" required></textarea>
-                                                </fieldset>
-                                                <fieldset>
-                                                    <input placeholder="Budget ID" type="text" name="budget_id" tabindex="4" autofocus>
-                                                </fieldset>
-                                                <fieldset>
-                                                  <input placeholder="Mentor Fee" type="text" name="mentor_fee" tabindex="4" required autofocus>
-                                                </fieldset>
-                                                <fieldset>
-                                                  <input placeholder="Course Materials Fee" type="text" name="mat_fee" tabindex="4" required autofocus>
-                                                </fieldset>
+                                                    <input placeholder="E-Mail" type="email" name="coach_email" tabindex="4" required autofocus>
+                                                  </fieldset>
+                                                  <fieldset>
+                                                    <input placeholder="Phone" type="text" name="coach_phone" tabindex="4" required autofocus>
+                                                  </fieldset>
                                                 <fieldset>
                                                   <button type="submit">Submit</button>
                                                 </fieldset>
@@ -282,43 +282,27 @@ $j='a';
 
                                         <table class="table table-bordered">
                                             <tr>
-                                                <th>Course Id</th>
-                                                <th>Course Name</span></th>
-                                                <th>Start Date</th>
-                                                <th>Status</th>
-                                                <th>Decription</th>
+                                                <th>Coach Id</th>
+                                                <th>Name</span></th>
+                                                <th>Address</th>
+                                                <th>University</th>
+                                                <th>Email</th>
+                                                <th>Phone No.</th>
+                                                <th>Edit</th>
+
                                               </tr>
                                               <tr>
                                                 @foreach ($send as $row )
                                               @php
-                                                  $course_id = $row['course_id'];
+                                                  $coach_id = $row['coach_id'];
                                               @endphp
-                                              <td>{{ $row['course_id'] }}</td>
-                                              <td>{{ $row['course_name'] }}</td>
-                                              <td>{{ date('d-m-Y', strtotime($row['start_date']))}}</td>
-                                              <td>{{ $row['course_status'] }}</td>
+                                              <td>{{ $row['coach_id'] }}</td>
+                                              <td>{{ $row['coach_name'] }}</td>
+                                              <td>{{ $row['coach_address'] }}</td>
+                                              <td>{{ $row['coach_university'] }}</td>
+                                              <td>{{ $row['coach_email'] }}</td>
+                                              <td>{{ $row['coach_phone'] }}</td>
                                               <td >
-                                                <div class="w3-container" style="display: inline-block;">
-                                                  <button onclick="document.getElementById('{{ $i }}').style.display='block'" class="w3-button w3-green w3-round">View</button>
-
-                                                  <div id="{{ $i }}" class="w3-modal">
-                                                    <div class="w3-modal-content w3-animate-zoom">
-                                                      <header class="w3-container w3-teal">
-                                                        <span onclick="document.getElementById('{{ $i }}').style.display='none'"
-                                                        class="w3-button w3-display-topright">&times;</span>
-                                                        <h2>Modal Header</h2>
-                                                      </header>
-                                                      <div class="w3-container">
-                                                        {{-- <p>Some text..</p>
-                                                        <p>Some text..</p> --}}
-                                                        {{ $row['course_info'] }}
-                                                      </div>
-                                                      <footer class="w3-container w3-teal">
-                                                        <p>Modal Footer</p>
-                                                      </footer>
-                                                    </div>
-                                                  </div>
-                                                </div>
                                                 {{-- Update Form --}}
                                                 <div class="w3-container" style="display: inline-block; margin-left:1px">
                                                   <button onclick="document.getElementById('{{ $j }}').style.display='block'" class="w3-button w3-green w3-round">Edit</button>
@@ -332,47 +316,33 @@ $j='a';
                                                       </header> -->
                                                       <span onclick="document.getElementById('{{ $j }}').style.display='none'"
                                                         class="w3-button w3-display-topright">&times;</span>
-                                                      <form id="contact" action="update_course/{{ $course_id }}" method="post">
+                                                      <form id="contact" action="update_coach/{{ $coach_id }}" method="post">
                                                         @csrf
-                                                        <h3> Update Course</h3><br>
+                                                        <h3> Update Coach Information</h3><br>
                                                         <fieldset>
-                                                          <label for="">Course Name: </label>
-                                                          <input placeholder="Course Name" type="text" name="Course_name" tabindex="1" value="{{  $row['course_name']  }}" >
+                                                          <label for="">Address </label>
+                                                          <input placeholder="Address" type="text" name="coach_address" tabindex="1" value="{{  $row['coach_address']  }}" >
                                                         </fieldset>
                                                         <br>
+
+
+
                                                         <fieldset>
-                                                          <label for="">Start Date:</label>
-                                                          @php
-                                                           $date = date('Y-m-d', strtotime($row['start_date']));
-                                                          @endphp
-                                                          <input  type="date" name="start" tabindex="2" value={{ $date }}>
-                                                        </fieldset>
-                                                        <br>
-                                                        <fieldset>
-                                                          <label for="">End Date:</label>
-                                                          <input  type="date" name="end" tabindex="2" >
-                                                        </fieldset>
-                                                        <br>
-                                                        <fieldset>
-                                                          <label for="hello">Budget Id:</label>
-                                                          <input placeholder="Budget ID" type="text" name="budget_id" tabindex="4" autofocus value="{{ $row['budget_id'] }}">
+                                                          <label for="hello">Email:</label>
+                                                          <input placeholder="email" type="email" name="coach_email" tabindex="4" autofocus value="{{ $row['coach_email'] }}">
                                                       </fieldset>
                                                       <br>
+
                                                         <fieldset>
-                                                           <label for="hello">Course Status:</label>
-                                                          <input placeholder="Course Status" type="text" name="status" tabindex="1" value="{{  $row['course_status'] }}">
-                                                        </fieldset>
-                                                        <br>
-                                                        <fieldset>
-                                                           <label for="">Materials Fee: </label>
-                                                          <input placeholder="Course Materials Fee" type="text" name="mat_fee" tabindex="4" value="{{ $row['course_materialsfee'] }}" >
+                                                           <label for="">Phone no. </label>
+                                                          <input placeholder="Phone" type="text" name="coach_phone" tabindex="4" value="{{ $row['coach_phone'] }}" >
                                                         </fieldset>
                                                         <br>
                                                         <fieldset>
                                                           <button type="submit">Submit</button>
                                                         </fieldset>
                                                         <fieldset>
-                                                          <button type="submit" class="w3-red" formaction="delete_course/{{ $course_id }}">Delete Record</button>
+                                                          <button type="submit" class="w3-red" formaction="delete_coach/{{ $coach_id }}">Delete Record</button>
                                                         </fieldset>
 
                                                       </form>
@@ -419,8 +389,8 @@ $j='a';
         </div>
         <!-- END content-page -->
 
-        <footer class="footer">
-            {{-- <span class="text-right">
+        {{-- <footer class="footer">
+            <span class="text-right">
                 Copyright <a target="_blank" href="#">Your Company</a>
             </span>
             <span class="float-right">
@@ -428,8 +398,8 @@ $j='a';
                 <!-- You can delete the links only if you purchased the pro or extended version. -->
                 <!-- Purchase the pro or extended version with PHP version of this template: https://bootstrap24.com/template/nura-admin-4-free-bootstrap-admin-template -->
                 Powered by <a target="_blank" href="https://bootstrap24.com" title="Download free Bootstrap templates"><b>Bootstrap24.com</b></a>
-            </span> --}}
-        </footer>
+            </span>
+        </footer> --}}
 
         <script src="assets/js/modernizr.min.js"></script>
         <script src="assets/js/jquery.min.js"></script>

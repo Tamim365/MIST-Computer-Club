@@ -14,7 +14,7 @@ class CreateBudgetsTable extends Migration
     public function up()
     {
         Schema::create('budgets', function (Blueprint $table) {
-            $table->increments('Budget_Id');
+            $table->increments('Budget_Id')->start(1000)->nocache();
             $table->integer('Budget_Amount')->nullable();
             $table->integer('Budget_Remain')->nullable()->default(0);
             $table->string('Budget_Proposal_Info')->nullable();

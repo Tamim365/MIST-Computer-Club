@@ -15,6 +15,6 @@ class Member extends Model
         'updated_at' => 'datetime:d/m/Y',
     ];
     // // public $incrementing = false;
-    // public $timestamps = false;
+     public $timestamps = false;
     use HasFactory;
 }

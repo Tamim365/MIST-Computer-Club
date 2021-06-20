@@ -14,7 +14,7 @@ class CreateCoursesTable extends Migration
     public function up()
     {
         Schema::create('courses', function (Blueprint $table) {
-            $table->increments('Course_Id');
+            $table->increments('Course_Id')->start(1000)->nocache();
             $table->unsignedBigInteger('budget_id')->nullable();
             $table->foreign('budget_id')->references('budget_id')->on('budgets')->onUpdate('cascade')->onDelete('cascade');
 
