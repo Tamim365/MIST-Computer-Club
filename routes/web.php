@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::view('Registration', 'Registration');
 Route::get('course-content', [CourseController::class, 'index']);
+Route::view('activities', 'activity');
 
 Route::post('/auth/save/member',[AuthController::class, 'save_member'])->name('auth.save.member');
 Route::post('/auth/save/moderator',[AuthController::class, 'save_moderator'])->name('auth.save.moderator');

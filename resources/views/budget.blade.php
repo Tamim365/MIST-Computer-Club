@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('header')
-<link rel="stylesheet" href="css/team table.css">
+    <link rel="stylesheet" href="css/team table.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="css/form.css">
     <title>Club Budgets</title>
