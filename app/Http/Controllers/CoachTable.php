@@ -10,7 +10,7 @@ class CoachTable extends Controller
     //
     public function index(){
     $send = Coach::all()->toArray();
-    return view('coachtable',compact('send'));
+    return view('dashboard/coach',compact('send'));
     }
 
 }
