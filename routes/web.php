@@ -113,10 +113,10 @@ Route::post('update_rnd/{id}',[RNDController::class,'update']);
 Route::post('delete_rnd/{id}',[RNDController::class,'delete']);
 
 //For Dashboard
-Route::view('dash', 'dashboard_index')->name('dashboard.index');
+// Route::view('dash', 'dashboard_index')->name('dashboard.index');
 Route::view('user_dash', 'users_dash')->name('user.index');
 Route::view('dashboard', 'dashboard/index');
-Route::view('dashboard/user','dashboard/user');
+Route::view('dashboard/user','dashboard/user')->name('dashboard.index');
 // Route::view('dashboard/team','dashboard/team');
 //For Volunteer
 
