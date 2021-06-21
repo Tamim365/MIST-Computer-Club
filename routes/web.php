@@ -37,6 +37,7 @@ Route::get('course-content', [CourseController::class, 'index']);
 Route::view('activities', 'activity');
 Route::view('community', 'community');
 Route::view('events', 'fest');
+Route::view('dashboard/committee', 'dashboard/committee');
 
 Route::post('/auth/save/member',[AuthController::class, 'save_member'])->name('auth.save.member');
 Route::post('/auth/save/moderator',[AuthController::class, 'save_moderator'])->name('auth.save.moderator');
@@ -58,8 +59,14 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
     Route::get('/auth/logout',[AuthController::class, 'logout'])->name('auth.logout');
     Route::get('/member/profile',[MemberController::class, 'member_profile'])->name('member.profile');
+    Route::get('/member/profile',[MemberController::class, 'update'])->name('member.profile.update');
     Route::get('/moderator/profile',[ModeratorController::class, 'moderator_profile'])->name('moderator.profile');
 });
+
+///updating panel
+Route::post('/panel/update',[MemberController::class, 'update_panel'])->name('panel.update');
+
+
 //For Course
 Route::post('submit_course',[CourseController::class,'save']);
 Route::post('update_course/{id}',[CourseController::class,'update']);

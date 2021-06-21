@@ -11,8 +11,8 @@ class ModeratorController extends Controller
 {
     function moderator_profile(){
         $moderator = session('LoggedUser')[0];
-        $data = ['moderatorData'=>Moderator::where('email','=', $moderator->faculty_id)->first()];
-        // dd($data);
+        $data = ['moderatorData'=>Moderator::where('email','=', $moderator->email)->first()];
+        // dd($moderator->faculty_id);
         return view('moderator.profile', $data);
     }
     public function update(Request $request)

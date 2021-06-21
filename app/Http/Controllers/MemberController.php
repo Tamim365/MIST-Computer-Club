@@ -73,4 +73,17 @@ class MemberController extends Controller
         DB::table('members')->where('club_id', $id)->delete();
         return redirect()->back();
     }
+    public function update_panel(Request $request){
+        $request->validate([
+            'club_id'=>'required|exists:members,club_id',
+            'panel_role' => 'required',
+        ]);
+        DB::table('members')
+        ->where('club_id', '=' , $request->club_id)
+        ->update([
+            'committe_name' => $request->committee_name,
+            'panel_role' => $request->panel_role,
+        ]);
+        return redirect()->back();
+    }
 }
