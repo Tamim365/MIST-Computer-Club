@@ -63,7 +63,7 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 });
 
 ///updating panel
-Route::post('/member/profile',[MemberController::class, 'update_panel'])->name('panel.update');
+Route::post('/panel/update',[MemberController::class, 'update_panel'])->name('panel.update');
 
 
 //For Course
