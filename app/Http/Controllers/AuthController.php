@@ -33,6 +33,9 @@ class AuthController extends Controller
             $member->Email = (string)$request->email;
             $member->Password = (string)Hash::make($request->password);
             $member->Student_ID = (string)$request->Student_ID;
+            if($request->filled('picture')){
+                $member->picture = (string)$request->picture;
+            }
             $save = $member->save();
             if($save){
                 return back()->with('success','Registration Successful');

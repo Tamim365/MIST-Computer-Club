@@ -43,6 +43,7 @@ Route::post('/member/profile',[MemberController::class, 'update'])->name('member
 Route::post('/moderator/profile',[ModeratorController::class, 'update'])->name('moderator.profile.update');
 Route::post('/upload/member/{club_id}', [MemberController::class, 'uploadImage']);
 Route::post('/upload/moderator/{fact_id}', [ModeratorController::class, 'uploadImage']);
+Route::post('/delete/member/{id}',[MemberController::class,'delete']);
 
 Route::any('/tables',[AdminController::class, 'load'])->name('tables.load');
 

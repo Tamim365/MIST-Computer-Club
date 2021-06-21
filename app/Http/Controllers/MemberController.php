@@ -69,4 +69,8 @@ class MemberController extends Controller
         }
         return redirect('member/profile');
     }
+    public function delete($id){
+        DB::table('members')->where('club_id', $id)->delete();
+        return redirect()->back();
+    }
 }
