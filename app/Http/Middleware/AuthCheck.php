@@ -28,6 +28,7 @@ class AuthCheck
             $userType = session()->all()['LoggedUser'][1];
             if($userType == 'member' && $request->path() == 'moderator/profile') return redirect('member/profile');
             if($userType == 'moderator' && $request->path() == 'member/profile') return redirect('moderator/profile');
+            if($userType == 'admin' && $request->path() == 'member/profile') return redirect('/');
         }
         return $next($request)->header('Cache-Control','no-cache, no-store, max-age=0, must-revalidate')
                               ->header('Pragma','no-cache')

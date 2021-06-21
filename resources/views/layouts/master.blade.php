@@ -68,11 +68,15 @@
                                 <li><a href="{{route('/')}}">Home</a></li>
                                 <li><a href="#">About us</a></li>
                                 <li><a href="{{url('/activities')}}">Activities and News</a></li>
-                                <li><a href="#">Community</a></li>
+                                <li><a href="{{url('/community')}}">Community</a></li>
                                 <li><a href="#">Gallery</a></li>
                                 <li><a href="#">Contact Us</a></li>
                                 @if (session()->has('LoggedUser'))
-                                    <li><a href="{{route('member.profile')}}">Profile</a></li>                                   
+                                    @if (session('LoggedUser')[1]=='admin')
+                                        <li><a href="{{route('dashboard.index')}}">Dashboard</a></li>                                   
+                                    @else
+                                        <li><a href="{{route('member.profile')}}">Profile</a></li>                                   
+                                    @endif
                                 @else
                                     <li><a href="{{route('auth.login')}}">Login</a></li>
                                     <li><a href="{{route('auth.register')}}">Registration</a></li>

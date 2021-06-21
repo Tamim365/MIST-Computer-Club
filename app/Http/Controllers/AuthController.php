@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Member;
+use App\Models\Admin;
 use App\Models\Moderator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +28,7 @@ class AuthController extends Controller
             'confirm_password' => 'required|same:password|min:6',
         ]);
         try {
-            $member = new member;
+            $member = new Member;
             $member->Name = (string)$request->name;
             $member->Email = (string)$request->email;
             $member->Password = (string)Hash::make($request->password);
@@ -73,32 +74,83 @@ class AuthController extends Controller
             return;
         }
     }
+    function save_admin(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email|unique:members|unique:moderators',
+            'password' => 'required|min:6',
+            'confirm_password' => 'required|same:password|min:6',
+        ]);
+        try {
+            $admin = new Admin;
+            $admin->Admin_Name = (string)$request->name;
+            $admin->Admin_Email = (string)$request->email;
+            $admin->Admin_Password = (string)Hash::make($request->password);
+            $save = $admin->save();
+            if($save){
+                return back()->with('success','Registration Successful');
+            }else{
+                return back()->with('fail','Something went wrong, try again later');
+            }
+            return;
+        }
+        catch(exception $e) {
+            DB::rollback();
+            return;
+        }
+    }
     function check(Request $request){
         $request->validate([
             'email'=>'required|email',
             'password'=>'required|min:6'
        ]);
 
-       $userInfo = Member::where('email','=', $request->email)->first();
-        if(!$userInfo){
+        $userInfo = Member::where('email','=', $request->email)->first();
+        if(!$userInfo)
+        {
             $userInfo = Moderator::where('email','=', $request->email)->first();
-            if(!$userInfo){
-                return back()->with('fail','Incorrect Email or Password');
-            }else{
-                if(Hash::check($request->password, $userInfo->password)){
+            if(!$userInfo)
+            {
+                $userInfo = Admin::where('admin_email','=', $request->email)->first();
+                if(!$userInfo)
+                {
+                    return back()->with('fail','Incorrect Email or Password');
+                }
+                else
+                {
+                    if(Hash::check($request->password, $userInfo->admin_password))
+                    {
+                        $request->session()->put('LoggedUser', [$userInfo, 'admin']);
+                        return redirect('/');
+                    }
+                    else
+                    {
+                        return back()->with('fail','Incorrect Email or Password');
+                    }
+                }
+            }
+            else
+            {
+                if(Hash::check($request->password, $userInfo->password))
+                {
                     $request->session()->put('LoggedUser', [$userInfo, 'moderator']);
                     return redirect('member/profile');
-    
-                }else{
+                }
+                else
+                {
                     return back()->with('fail','Incorrect Email or Password');
                 }
             }
-        } else{
-            if(Hash::check($request->password, $userInfo->password)){
+        } 
+        else
+        {
+            if(Hash::check($request->password, $userInfo->password))
+            {
                 $request->session()->put('LoggedUser', [$userInfo, 'member']);
                 return redirect('member/profile');
-
-            }else{
+            }
+            else
+            {
                 return back()->with('fail','Incorrect Email or Password');
             }
         }
