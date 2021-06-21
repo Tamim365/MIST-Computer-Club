@@ -108,7 +108,7 @@ Route::view('user_dash', 'users_dash')->name('user.index');
 Route::view('blog', 'blog')->name('blog.index');
 Route::view('dashboard', 'dashboard/index');
 Route::view('dashboard/user','dashboard/user');
-
+// Route::view('dashboard/team','dashboard/team');
 //For Volunteer
 
 Route::get('volunteer',[Volunteertable::class,'index'])->name('vol.table');

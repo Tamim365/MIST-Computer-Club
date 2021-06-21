@@ -10,7 +10,7 @@ class TeamsTable extends Controller
     public function index(){
 
         $send = Team::all()->toArray();
-        return view('teamtable',compact('send'));
+        return view('dashboard/team',compact('send'));
 
     }
 
