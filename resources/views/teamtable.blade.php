@@ -240,6 +240,8 @@ $j='a';
 
                                         <div class="w3-container" style="display: inline-block; margin-top:20px">
                                           <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-green w3-round">Add Team</button>
+                                          <span class="text-danger">@error('coach_id'){{ $message }} @enderror</span>
+                                          <span class="text-danger">@error('coach_id'){{ $message }} @enderror</span>
 
                                           <div id="id02" class="w3-modal">
                                             <div class="w3-modal-content w3-animate-zoom">
@@ -259,12 +261,13 @@ $j='a';
                                                 <fieldset>
                                                     <input placeholder="Team Leader" type="text" name="team_leader" tabindex="1" required autofocus>
                                                   </fieldset>
-
+                                                
 
 
                                                 <fieldset>
                                                   <input placeholder="Coach ID" type="text" name="coach_id" tabindex="4" required autofocus>
                                                 </fieldset>
+                                                
                                                 <fieldset>
                                                   <button type="submit">Submit</button>
                                                 </fieldset>
@@ -314,27 +317,27 @@ $j='a';
                                                       </header> -->
                                                       <span onclick="document.getElementById('{{ $j }}').style.display='none'"
                                                         class="w3-button w3-display-topright">&times;</span>
-                                                      <form id="contact" action="update_team/{{ $team_id }}" method="post">
-                                                        @csrf
-                                                        <h3> Update Team</h3><br>
-                                                        <fieldset>
-                                                          <label for="">Team Name: </label>
-                                                          <input placeholder="Team Name" type="text" name="team_name" tabindex="1" value="{{  $row['team_name']  }}" >
-                                                        </fieldset>
-                                                        <br>
-
-
-
-                                                        <fieldset>
-                                                          <label for="hello">Team Leader:</label>
-                                                          <input placeholder="Team Leader" type="text" name="team_leader" tabindex="4" autofocus value="{{ $row['team_leader'] }}">
-                                                      </fieldset>
-                                                      <br>
-
-                                                        <fieldset>
-                                                           <label for="">Coach ID: </label>
-                                                          <input placeholder="Coach Id" type="text" name="coach_id" tabindex="4" value="{{ $row['coach_id'] }}" >
-                                                        </fieldset>
+                                                        <form id="contact" action="update_team/{{ $team_id }}" method="post">
+                                                            @csrf
+                                                            <h3> Update Team</h3><br>
+                                                            <fieldset>
+                                                                <label for="">Team Name: </label>
+                                                                <input placeholder="Team Name" type="text" name="team_name" tabindex="1" value="{{  $row['team_name']  }}" >
+                                                            </fieldset>
+                                                            <br>
+                                                            
+                                                            
+                                                            
+                                                            <fieldset>
+                                                                <label for="hello">Team Leader:</label>
+                                                                <input placeholder="Team Leader" type="text" name="team_leader" tabindex="4" autofocus value="{{ $row['team_leader'] }}">
+                                                            </fieldset>
+                                                            <br>
+                                                            
+                                                            <fieldset>
+                                                                <label for="">Coach ID: </label>
+                                                                <input placeholder="Coach Id" type="text" name="coach_id" tabindex="4" value="{{ $row['coach_id'] }}" >
+                                                            </fieldset>
                                                         <br>
                                                         <fieldset>
                                                           <button type="submit">Submit</button>

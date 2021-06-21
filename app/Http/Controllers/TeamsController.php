@@ -11,7 +11,11 @@ class TeamsController extends Controller
     //
     function save(Request $req){
         //print_r($req->input());
-
+        $req->validate([
+            'team_name' => 'required',
+            'team_leader' => 'required',
+            'coach_id' => 'required|exists:coaches,coach_id'
+        ]);
           $team =new Team();
           $team->team_name = $req->team_name;
           $team->team_leader = $req->team_leader;
@@ -26,7 +30,11 @@ class TeamsController extends Controller
      }
 
      function update(Request $req,$id){
-
+        $req->validate([
+            'team_name' => 'required',
+            'team_leader' => 'required',
+            'coach_id' => 'required|exists:coaches,coach_id'
+        ]);
          $file = DB::table('teams')
                  ->where('team_id',$id)
                  ->update(
@@ -37,13 +45,9 @@ class TeamsController extends Controller
 
                  );
                  return redirect()->back();
-
-
      }
      function delete($id){
-
          DB::table('teams')->where('team_id', $id)->delete();
          return redirect()->back();
-
      }
     }

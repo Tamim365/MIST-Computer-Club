@@ -106,6 +106,7 @@ Route::post('delete_rnd/{id}',[RNDController::class,'delete']);
 Route::view('dash', 'dashboard_index')->name('dashboard.index');
 Route::view('user_dash', 'users_dash')->name('user.index');
 Route::view('blog', 'blog')->name('blog.index');
+Route::view('dashboard', 'dashboard/index');
 
 //For Volunteer
 
