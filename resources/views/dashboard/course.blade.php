@@ -1,4 +1,4 @@
-@extends('dashboard.master')
+@extends('dashboard.master',['active_class' => 'course'])
 @section('header')
     <title> Dashboard|Course</title>
     <!-- BEGIN CSS for this page -->

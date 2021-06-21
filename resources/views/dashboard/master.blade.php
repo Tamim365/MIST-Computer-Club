@@ -137,19 +137,19 @@
                             </ul>
                         </li> --}}
                         <li class="submenu ">
-                            <a href="{{ route('courses.table') }}" >
+                            <a href="{{ route('courses.table') }}" class="@if($active_class=='course') active @endif" >
                                 <i class="fab fa-leanpub"></i>
                                 <span> Courses </span>
                             </a>
                         </li>
                         <li class="submenu ">
-                            <a href="{{ route('team.table') }}"  >
+                            <a href="{{ route('team.table') }}" class="@if($active_class=='team') active @endif"  >
                                 <i class="fas fa-users"></i>
                                 <span> Teams </span>
                             </a>
                         </li>
                         <li class="submenu ">
-                            <a href="{{ route('coach.table') }}" >
+                            <a href="{{ route('coach.table') }}" class="@if($active_class=='coach') active @endif" >
                                 <i class="fas fa-chalkboard-teacher"></i>
                                 <span> Coach </span>
                             </a>
@@ -161,7 +161,7 @@
                             </a>
                         </li>
                         <li class="submenu ">
-                            <a href="{{ route('rnd.table') }}" >
+                            <a href="{{ route('rnd.table') }}" class="@if($active_class=='rnd') active @endif" >
                                 <i class="fas fa-briefcase"></i>
                                 <span> RND </span>
                             </a>
