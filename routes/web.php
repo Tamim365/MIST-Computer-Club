@@ -46,6 +46,7 @@ Route::post('/member/profile',[MemberController::class, 'update'])->name('member
 Route::post('/moderator/profile',[ModeratorController::class, 'update'])->name('moderator.profile.update');
 Route::post('/upload/member/{club_id}', [MemberController::class, 'uploadImage']);
 Route::post('/upload/moderator/{fact_id}', [ModeratorController::class, 'uploadImage']);
+Route::post('/delete/member/{id}',[MemberController::class,'delete']);
 
 Route::any('/tables',[AdminController::class, 'load'])->name('tables.load');
 
@@ -109,7 +110,8 @@ Route::post('delete_rnd/{id}',[RNDController::class,'delete']);
 Route::view('dash', 'dashboard_index')->name('dashboard.index');
 Route::view('user_dash', 'users_dash')->name('user.index');
 Route::view('dashboard', 'dashboard/index');
-
+Route::view('dashboard/user','dashboard/user');
+// Route::view('dashboard/team','dashboard/team');
 //For Volunteer
 
 Route::get('volunteer',[Volunteertable::class,'index'])->name('vol.table');
@@ -122,12 +124,17 @@ Route::view('blogadd', 'blog_add')->name('blog_add.index');
 //For Enroll
 
 Route::get('enroll',[EnrollController::class,'index'])->name('enroll.index');
+<<<<<<< HEAD
 //For Fest
 Route::get('fest',[FestTable::class,'index'])->name('blog.index');
 Route::post('submit_fest',[FestController::class,'save']);
 Route::post('update_fest/{id}',[FestController::class,'update']);
 Route::post('delete_fest/{id}',[FestController::class,'delete']);
 Route::get('festShow',[FestShow::class,'show'])->name('festshow.index');
+=======
+// Route::get('teams',[TeamsTable::class,'index'])->name('team.table');
+
+>>>>>>> 20adc8976a1b9553cac7ea92586794d0119266cd
 
 
 

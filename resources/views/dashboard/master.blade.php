@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title> Dashboard</title>
+    {{-- <title> Dashboard</title> --}}
     <meta name="description" content="Dashboard | Nura Admin">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,29 +92,29 @@
                     <ul>
 
                         <li class="submenu">
-                            <a href="{{ route('dashboard.index') }}" class="active">
+                            <a href="{{ url('/dashboard') }}" class="@if($active_class=='dashboard') active @endif">
                                 <i class="fas fa-bars"></i>
                                 <span> Dashboard </span>
                             </a>
                         </li>
 
                         <li class="submenu">
-                            <a href="{{ route('user.index') }}">
+                            <a href="{{url('dashboard/user') }}" class="@if($active_class=='user') active @endif">
                                 <i class="fas fa-user"></i>
-                                <span> Users </span>
+                                <span> Members </span>
                             </a>
                         </li>
 
 
 
                         <li class="submenu">
-                            <a href="{{ route('budget.table') }}">
+                            <a href="{{ route('budget.table') }}" class="@if($active_class=='budget') active @endif">
                                 <i class="fas fa-money-check-alt"></i>
                                 <span> Budgets </span>
                             </a>
                         </li>
                         <li class="submenu">
-                            <a href="{{ route('blog.index') }}">
+                            <a href="{{ route('blog.index') }}" class="@if($active_class=='Event') active @endif">
                                 <i class="far fa-calendar-alt"></i>
                                 <span> Event And Activities </span>
                             </a>
@@ -192,22 +192,22 @@
         @yield('content')
         
         <!-- END content-page -->
-        <script src="{{URL::asset('assets/js/modernizr.min.js')}}"></script>
-        <script src="{{URL::asset('assets/js/jquery.min.js')}}"></script>
-        <script src="{{URL::asset('assets/js/moment.min.js')}}"></script>
-
-        <script src="{{URL::asset('assets/js/popper.min.js')}}"></script>
-        <script src="{{URL::asset('assets/js/bootstrap.min.js')}}"></script>
-
-        <script src="{{URL::asset('assets/js/detect.js')}}"></script>
-        <script src="{{URL::asset('assets/js/fastclick.js')}}"></script>
-        <script src="{{URL::asset('assets/js/jquery.blockUI.js')}}"></script>
-        <script src="{{URL::asset('assets/js/jquery.nicescroll.js')}}"></script>
-
-        <!-- App js -->
-        <script src="{{URL::asset('assets/js/admin.js')}}"></script>
-
+        
     </div>
+    <script src="{{URL::asset('assets/js/modernizr.min.js')}}"></script>
+    <script src="{{URL::asset('assets/js/jquery.min.js')}}"></script>
+    <script src="{{URL::asset('assets/js/moment.min.js')}}"></script>
+
+    <script src="{{URL::asset('assets/js/popper.min.js')}}"></script>
+    <script src="{{URL::asset('assets/js/bootstrap.min.js')}}"></script>
+
+    <script src="{{URL::asset('assets/js/detect.js')}}"></script>
+    <script src="{{URL::asset('assets/js/fastclick.js')}}"></script>
+    <script src="{{URL::asset('assets/js/jquery.blockUI.js')}}"></script>
+    <script src="{{URL::asset('assets/js/jquery.nicescroll.js')}}"></script>
+
+    <!-- App js -->
+    <script src="{{URL::asset('assets/js/admin.js')}}"></script>
     <!-- END main -->
     @yield('js')
 </body>

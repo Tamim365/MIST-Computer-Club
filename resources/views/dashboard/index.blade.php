@@ -1,4 +1,4 @@
-@extends('dashboard.master')
+@extends('dashboard.master', ['active_class' => 'dashboard'])
 @section('header')
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 @endsection

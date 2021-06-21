@@ -9,7 +9,7 @@ class RNDTable extends Controller
 {
     public function index(){
         $send = RND::all()->toArray();
-        return view('rndtable',compact('send'));
+        return view('dashboard/rnd',compact('send'));
     }
-    }
+}
 

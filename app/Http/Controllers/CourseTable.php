@@ -11,7 +11,7 @@ class CourseTable extends Controller
     public function index(){
 
         $send = Course::all()->toArray();
-        return view('coursetablenew',compact('send'));
+        return view('dashboard/course',compact('send'));
 
     }
 }
