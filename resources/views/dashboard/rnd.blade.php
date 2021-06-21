@@ -1,6 +1,6 @@
 @extends('dashboard.master',['active_class' => 'rnd'])
 @section('header')
-    <title>Dashboard|RnD</title> 
+    <title>Dashboard|RnD</title>
     <!-- BEGIN CSS for this page -->
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/plugins/datatables/datatables.min.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('css/team table.css') }}">
@@ -17,6 +17,7 @@
 @php
 $i=1;
 $j='a';
+$k=1000;
 @endphp
     <div class="content-page">
 
@@ -69,9 +70,9 @@ $j='a';
                                                 <fieldset>
                                                   <input placeholder="Project Title" type="text" name="project_title" tabindex="1" required autofocus>
                                                 </fieldset>
-                                                <fieldset>
+                                                {{-- <fieldset>
                                                     <input placeholder="Budget" type="text" name="budget_id" tabindex="1" required autofocus>
-                                                </fieldset>
+                                                </fieldset> --}}
                                                 <fieldset>
                                                     <input placeholder="Equipment Cost" type="text" name="project_equipment" tabindex="1"  autofocus>
                                                 </fieldset>
@@ -113,6 +114,8 @@ $j='a';
                                                 <th>Equipment Cost</th>
                                                 <th>Labour Cost</th>
                                                 <th>Mangement Cost</th>
+                                                <th>Edit</th>
+                                                <th>Budget Status</th>
 
 
                                               </tr>
@@ -179,11 +182,73 @@ $j='a';
                                                   </div>
                                                 </div>
                                               </td>
+                                              <td>
+                                                @if (!$row['budget_id'])
+                                                  <div class="w3-container" style="display: inline-block;">
+                                                    <button onclick="document.getElementById('{{$k}}').style.display='block'" class="w3-btn w3-orange w3-round">Request Budget</button>
+
+                                                    <div id="{{$k}}" class="w3-modal">
+                                                      <div class="w3-modal-content w3-animate-zoom">
+                                                        <!-- <header class="w3-container w3-teal">
+                                                          <span onclick="document.getElementById('id02').style.display='none'"
+                                                          class="w3-button w3-display-topright">&times;</span>
+                                                          <h2>Modal Header</h2>
+                                                        </header> -->
+                                                        <span onclick="document.getElementById('{{$k}}').style.display='none'"
+                                                          class="w3-button w3-display-topright">&times;</span>
+
+
+
+                                                        <form id="contact" action="submit_budget" method="post">
+                                                          @csrf
+                                                          <h3> New Budget Allocation </h3><br>
+                                                          <fieldset>
+                                                            <h5>Project ID</h5>
+                                                            <input value="{{$project_id}}" type="text" name="project_id" tabindex="4"  readonly>
+                                                          </fieldset>
+                                                          <fieldset>
+                                                            <input placeholder="Budget Amount" type="text" name="Budget_Amount" tabindex="1" required autofocus>
+                                                          </fieldset>
+                                                          <fieldset>
+                                                            <textarea placeholder="Budget Proposal Info" name="Budget_Proposal_Info" tabindex="5" required></textarea>
+                                                          </fieldset>
+                                                          <fieldset>
+                                                            <input placeholder="Remarks" type="text" name="remarks" tabindex="4"  autofocus>
+                                                          </fieldset>
+                                                          <fieldset>
+                                                            <button type="submit" class="w3-btn w3-orange w3-round">Request</button>
+                                                          </fieldset>
+
+                                                        </form>
+
+                                                        <!-- <footer class="w3-container w3-teal">
+                                                          <p>Modal Footer</p>
+                                                        </footer> -->
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                @else
+                                                @php
+                                                    $budget = DB::table('budgets')->where('budget_id', '=', $row['budget_id'])->get()[0];
+                                                    $budget_status = $budget->budget_status;
+                                                @endphp
+                                                  @if ($budget_status == 'Accepted')
+                                                      <button class="w3-btn w3-teal w3-round">Accepted</button>
+                                                  @elseif ($budget_status == 'Declined')
+                                                      <button class="w3-btn w3-red w3-round">Declined</button>
+                                                  @else
+                                                      <button class="w3-btn w3-blue w3-round">Pending</button>
+                                                  @endif
+                                                @endif
+
+
+                                                      </td>
                                             </tr>
 
                                            @php
                                                $i++;
                                                $j++;
+                                               $k++
                                            @endphp
                                           @endforeach
 

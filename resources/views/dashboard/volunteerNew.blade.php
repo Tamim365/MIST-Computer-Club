@@ -78,7 +78,22 @@ $j='a';
                                                   </fieldset>
 
                                                 <fieldset>
-                                                  <input placeholder="Department" type="text" name="volunteer_dept" tabindex="4" required autofocus>
+                                                    <label for="">Department</label>
+                                                    <select name="volunteer_dept" id="">\
+                                                        <option value="CSE">CSE</option>
+                                                        <option value="EECE">EECE</option>
+                                                        <option value="CE">CE</option>
+                                                        <option value="ME">ME</option>
+                                                        <option value="BME">BME</option>
+                                                        <option value="IPE">IPE</option>
+                                                        <option value="EWCE">EWCE</option>
+                                                        <option value="NAME">NAME</option>
+                                                        <option value="AE">AE</option>
+                                                        <option value="PME">PME</option>
+                                                        <option value="ARCHI">ARCHI</option>
+
+                                                    </select>
+                                                  {{-- <input placeholder="Department" type="text" name="volunteer_dept" tabindex="4" required autofocus> --}}
                                                 </fieldset>
                                                 <fieldset>
                                                     <input placeholder="E-Mail" type="email" name="volunteer_email" tabindex="4" required autofocus>

@@ -12,7 +12,7 @@ class RNDController extends Controller
         //print_r($req->input());
 
           $project =new RND;
-          $project->budget_id = (int)$req->budget_id;
+          //$project->budget_id = (int)$req->budget_id;
           $project->project_title = $req->project_title;
           $project->project_equipment = (int)$req->project_equipment;
           $project->project_labor = (int)$req->project_labor;

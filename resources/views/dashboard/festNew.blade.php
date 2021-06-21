@@ -31,7 +31,7 @@
     <!-- END CSS for this page -->
 @endsection
 @section('content')
-    
+
 @php
 $i=1;
 $j='a';
@@ -115,7 +115,7 @@ $k = 1000;
                                                 </fieldset>
                                                 <fieldset>
                                                     <label for="">Fest Logo</label>
-                                                    <input type="hidden" name="picture" role="uploadcare-uploader" data-crop="1:1" data-images-only>
+                                                    <input type="hidden" name="picture" role="uploadcare-uploader" data-crop="" data-images-only>
                                                 </fieldset>
 
                                                 <fieldset>
