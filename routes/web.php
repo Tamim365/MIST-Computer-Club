@@ -15,6 +15,7 @@ use App\Http\Controllers\CoachController;
 use App\Http\Controllers\CoachTable;
 use App\Http\Controllers\ContestController;
 use App\Http\Controllers\ContestTable;
+use App\Http\Controllers\EnrollController;
 use App\Http\Controllers\Moderator;
 use App\Http\Controllers\RNDController;
 use App\Http\Controllers\RNDTable;
@@ -114,6 +115,10 @@ Route::post('submit_volunteer',[VounteerController::class,'save']);
 //For Add Events
 
 Route::view('blogadd', 'blog_add')->name('blog_add.index');
+
+//For Enroll
+
+Route::get('enroll',[EnrollController::class,'index'])->name('enroll.index');
 
 
 

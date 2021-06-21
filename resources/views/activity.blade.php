@@ -59,7 +59,7 @@
                             amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
                             aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
                             commodo consequat</p>
-                        <a href="{{url('/fest')}}">View Events</a>
+                        <a href="{{url('/events')}}">View Events</a>
                     </div> 
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 border_right">
