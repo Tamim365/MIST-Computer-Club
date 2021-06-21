@@ -67,11 +67,7 @@ $j='a';
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                             <!-- item-->
-                            <div class="dropdown-item noti-title">
-                                <h5 class="text-overflow">
-                                    <small>Hello, admin</small>
-                                </h5>
-                            </div>
+
 
                             <!-- item-->
                             <a href="profile.html" class="dropdown-item notify-item">
@@ -119,7 +115,7 @@ $j='a';
                         </li>
 
                         <li class="submenu">
-                            <a href="">
+                            <a href="{{ route('user.index') }}" >
                                 <i class="fas fa-user"></i>
                                 <span> Users </span>
                             </a>
@@ -133,6 +129,13 @@ $j='a';
                                 <span> Budgets </span>
                             </a>
                         </li>
+                        <li class="submenu">
+                            <a href="{{ route('blog.index') }}" >
+                                <i class="far fa-calendar-alt"></i>
+                                <span> Event And Activities </span>
+                            </a>
+                        </li>
+
 
                         {{-- <li class="submenu">
                             <a id="tables" href="#">
@@ -156,7 +159,7 @@ $j='a';
                             </a>
                         </li>
                         <li class="submenu ">
-                            <a href="{{ route('team.table') }}" class="active" >
+                            <a href="{{ route('team.table') }}" class="active">
                                 <i class="fas fa-users"></i>
                                 <span> Teams </span>
                             </a>
@@ -177,6 +180,12 @@ $j='a';
                             <a href="{{ route('rnd.table') }}" >
                                 <i class="fas fa-briefcase"></i>
                                 <span> RND </span>
+                            </a>
+                        </li>
+                        <li class="submenu ">
+                            <a href="{{ route('vol.table')  }}" >
+                                <i class="fas fa-hands-helping"></i>
+                                <span> Volunteer </span>
                             </a>
                         </li>
 

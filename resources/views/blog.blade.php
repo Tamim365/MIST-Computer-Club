@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <title> Dashboard</title>
-    <meta name="description" content="Dashboard | Nura Admin">
+    <title>Blog</title>
+    <meta name="description" content="Blog posts | Nura Admin">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Your website">
@@ -19,14 +19,6 @@
 
     <!-- Custom CSS -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
-
-    <!-- BEGIN CSS for this page -->
-    <link rel="stylesheet" type="text/css" href="assets/plugins/chart.js/Chart.min.css" />
-    <link rel="stylesheet" type="text/css" href="assets/plugins/datatables/datatables.min.css" />
-    <link rel="stylesheet" href="{{ asset('css/team table.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/form.css') }}">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <!-- END CSS for this page -->
 </head>
 
 <body class="adminbody">
@@ -40,7 +32,7 @@
             <div class="headerbar-left">
                 <a href="index.html" class="logo">
                     <img alt="Logo" src="assets/images/logo.png" />
-                    <span> Admin</span>
+                    <span> ADMIN</span>
                 </a>
             </div>
 
@@ -49,14 +41,15 @@
                 <ul class="list-inline float-right mb-0">
 
 
-
                     <li class="list-inline-item dropdown notif">
                         <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" aria-haspopup="false" aria-expanded="false">
                             <img src="assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                             <!-- item-->
+                            <div class="dropdown-item noti-title">
 
+                            </div>
 
                             <!-- item-->
                             <a href="profile.html" class="dropdown-item notify-item">
@@ -95,9 +88,8 @@
                 <div id="sidebar-menu">
 
                     <ul>
-
                         <li class="submenu">
-                            <a href="{{ route('dashboard.index') }}" class="active">
+                            <a href="{{ route('dashboard.index') }}">
                                 <i class="fas fa-bars"></i>
                                 <span> Dashboard </span>
                             </a>
@@ -110,20 +102,25 @@
                             </a>
                         </li>
 
-
-
                         <li class="submenu">
-                            <a href="{{ route('budget.table') }}">
+                            <a href="{{ route('budget.table') }}" >
                                 <i class="fas fa-money-check-alt"></i>
                                 <span> Budgets </span>
                             </a>
                         </li>
+
+
                         <li class="submenu">
-                            <a href="{{ route('blog.index') }}">
+                            <a href="{{ route('blog.index') }}" class="active">
                                 <i class="far fa-calendar-alt"></i>
                                 <span> Event And Activities </span>
                             </a>
                         </li>
+
+
+
+
+
 
 
                         {{-- <li class="submenu">
@@ -148,7 +145,7 @@
                             </a>
                         </li>
                         <li class="submenu ">
-                            <a href="{{ route('team.table') }}"  >
+                            <a href="{{ route('team.table') }}" >
                                 <i class="fas fa-users"></i>
                                 <span> Teams </span>
                             </a>
@@ -166,7 +163,7 @@
                             </a>
                         </li>
                         <li class="submenu ">
-                            <a href="{{ route('rnd.table') }}" >
+                            <a href="{{ route('rnd.table') }}">
                                 <i class="fas fa-briefcase"></i>
                                 <span> RND </span>
                             </a>
@@ -177,7 +174,6 @@
                                 <span> Volunteer </span>
                             </a>
                         </li>
-
 
 
 
@@ -201,31 +197,111 @@
 
                 <div class="container-fluid">
 
+
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="breadcrumb-holder">
-                                <h1 class="main-title float-left">Dashboard</h1>
+                                <h1 class="main-title float-left">Event And Activities</h1>
                                 <ol class="breadcrumb float-right">
                                     <li class="breadcrumb-item">Home</li>
-                                    <li class="breadcrumb-item active">Dashboard</li>
+                                    <li class="breadcrumb-item active">Blog posts</li>
                                 </ol>
                                 <div class="clearfix"></div>
                             </div>
-
-
                         </div>
                     </div>
-                    <!-- end row --
+                    <!-- end row -->
 
 
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+                            <div class="card mb-3">
+
+                                <div class="card-header">
+                                    <span class="pull-right"><a href="{{ route('blog_add.index') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus" aria-hidden="true"></i> Add new post</a></span>
+                                    <h3><i class="far fa-file-alt"></i> Event and Activities</h3>
+                                </div>
+                                <!-- end card-header -->
+
+                                <div class="card-body">
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th style="min-width: 300px">Article details</th>
+                                                    <th style="width:110px">Category</th>
+                                                    <th style="min-width:110px">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <tr>
+                                                    <td>
+                                                        <div class="blog_list"><img class="img-fluid d-none d-lg-block" alt="image" src="https://via.placeholder.com/180x120" /></div>
+                                                        <h4> Vivamus condimentum rutrum odio</h4>
+
+                                                    </td>
+
+                                                    <td>Event and Activities</td>
+
+                                                    <td>
+                                                        <a href="#" class="btn btn-primary btn-sm btn-block"><i class="far fa-edit"></i> Edit</a>
+                                                        <a href="#" class="btn btn-danger btn-sm btn-block mt-2"><i class="fas fa-trash"></i> Delete</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="blog_list"><img class="img-fluid d-none d-lg-block" alt="image" src="https://via.placeholder.com/180x120" /></div>
+                                                        <h4>Duis scelerisque eros sit amet risus lobortis</h4>
+
+                                                    </td>
+
+                                                    <td>Event and Activities/td>
+
+                                                    <td>
+                                                        <a href="#" class="btn btn-primary btn-sm btn-block"><i class="far fa-edit"></i> Edit</a>
+                                                        <a href="#" class="btn btn-danger btn-sm btn-block mt-2"><i class="fas fa-trash"></i> Delete</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="blog_list"><img class="img-fluid d-none d-lg-block" alt="image" src="https://via.placeholder.com/180x120" /></div>
+                                                        <h4>Vestibulum justo et feugiat consectetur</h4>
+
+                                                    </td>
+
+                                                    <td>Event and Activities</td>
+
+                                                    <td>
+                                                        <a href="#" class="btn btn-primary btn-sm btn-block"><i class="far fa-edit"></i> Edit</a>
+                                                        <a href="#" class="btn btn-danger btn-sm btn-block mt-2"><i class="fas fa-trash"></i> Delete</a>
+                                                    </td>
+                                                </tr>
 
 
+                                            </tbody>
+                                        </table>
+                                    </div>
 
-                 END container-fluid -->
 
-                 <div>
-                    <img src="{{ URL::asset('mcc_logo.png') }}" alt="" style="max-width: 70% ; max-height:70%">
-                 </div>
+                                </div>
+                                <!-- end card-body -->
+
+                            </div>
+                            <!-- end card -->
+
+                        </div>
+                        <!-- end col -->
+
+                    </div>
+                    <!-- end row -->
+
+                </div>
+                <!-- END container-fluid -->
+
             </div>
             <!-- END content -->
 
@@ -234,7 +310,7 @@
 
         <footer class="footer">
             {{-- <span class="text-right">
-                Copyright <a target="_blank" href="#">Company</a>
+                Copyright <a target="_blank" href="#">Your Company</a>
             </span>
             <span class="float-right">
                 <!-- Copyright footer link MUST remain intact if you download free version. -->
@@ -261,48 +337,6 @@
 
     </div>
     <!-- END main -->
-
-    <!-- BEGIN Java Script for this page -->
-    <script src="assets/plugins/chart.js/Chart.min.js"></script>
-    <script src="assets/plugins/datatables/datatables.min.js"></script>
-
-    <!-- Counter-Up-->
-    <script src="assets/plugins/waypoints/lib/jquery.waypoints.min.js"></script>
-    <script src="assets/plugins/counterup/jquery.counterup.min.js"></script>
-
-    <!-- dataTabled data -->
-    <script src="assets/data/data_datatables.js"></script>
-
-    <!-- Charts data -->
-    <script src="assets/data/data_charts_dashboard.js"></script>
-    <script>
-        $(document).on('ready', function() {
-            // data-tables
-            $('#dataTable').DataTable({
-                data: dataSet,
-                columns: [{
-                    title: "Name"
-                }, {
-                    title: "Position"
-                }, {
-                    title: "Office"
-                }, {
-                    title: "Extn."
-                }, {
-                    title: "Date"
-                }, {
-                    title: "Salary"
-                }]
-            });
-
-            // counter-up
-            $('.counter').counterUp({
-                delay: 10,
-                time: 600
-            });
-        });
-    </script>
-    <!-- END Java Script for this page -->
 
 </body>
 

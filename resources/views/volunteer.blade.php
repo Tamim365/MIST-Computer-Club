@@ -8,7 +8,7 @@ $j='a';
 <html lang="en">
 
 <head>
-    <title> Coach Table</title>
+    <title> volunteer Table</title>
     <meta name="description" content="DataTables | Nura Admin">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -164,7 +164,7 @@ $j='a';
                             </a>
                         </li>
                         <li class="submenu ">
-                            <a href="{{ route('coach.table') }}"  class="active" >
+                            <a href="{{ route('coach.table') }}"   >
                                 <i class="fas fa-chalkboard-teacher"></i>
                                 <span> Coach </span>
                             </a>
@@ -182,11 +182,12 @@ $j='a';
                             </a>
                         </li>
                         <li class="submenu ">
-                            <a href="{{ route('vol.table')  }}" >
+                            <a href="{{ route('vol.table')  }}" class="active" >
                                 <i class="fas fa-hands-helping"></i>
                                 <span> Volunteer </span>
                             </a>
                         </li>
+
 
 
 
@@ -213,10 +214,10 @@ $j='a';
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="breadcrumb-holder">
-                                <h1 class="main-title float-left">Coach Tables</h1>
+                                <h1 class="main-title float-left">Volunteer Tables</h1>
                                 <ol class="breadcrumb float-right">
                                     <li class="breadcrumb-item">Home</li>
-                                    <li class="breadcrumb-item active">Coach Tables</li>
+                                    <li class="breadcrumb-item active">Volunteer Tables</li>
                                 </ol>
                                 <div class="clearfix"></div>
                             </div>
@@ -229,7 +230,7 @@ $j='a';
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="card mb-3">
                                 <div class="card-header">
-                                    <h3><i class="fas fa-table"></i> Coaches </h3>
+                                    <h3><i class="fas fa-table"></i> Volunteer </h3>
 
                                 </div>
 
@@ -237,7 +238,7 @@ $j='a';
                                     <div style="display:flex ; align-content:center;">
 
                                         <div class="w3-container" style="display: inline-block; margin-top:20px">
-                                          <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-green w3-round">Add Coach</button>
+                                          <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-green w3-round">Add Volunteer</button>
 
                                           <div id="id02" class="w3-modal">
                                             <div class="w3-modal-content w3-animate-zoom">
@@ -248,26 +249,31 @@ $j='a';
                                               </header> -->
                                               <span onclick="document.getElementById('id02').style.display='none'"
                                                 class="w3-button w3-display-topright">&times;</span>
-                                              <form id="contact" action="submit_coach" method="post">
+                                              <form id="contact" action="submit_volunteer" method="post">
                                                 @csrf
-                                                <h3> New Coach Registration </h3><br>
+                                                <h3> New Volunteer Registration </h3><br>
                                                 <fieldset>
-                                                  <input placeholder="Coach Name" type="text" name="coach_name" tabindex="1" required autofocus>
+                                                  <input placeholder="volunteer Name" type="text" name="volunteer_name" tabindex="1" required autofocus>
                                                 </fieldset>
                                                 <fieldset>
-                                                    <input placeholder="Address" type="text" name="coach_address" tabindex="1" required autofocus>
+                                                    <input placeholder="Address" type="text" name="volunteer_address" tabindex="1" required autofocus>
                                                   </fieldset>
 
-
+                                                  <fieldset>
+                                                    <input placeholder="Level" type="text" name="volunteer_level" tabindex="1" required autofocus>
+                                                  </fieldset>
 
                                                 <fieldset>
-                                                  <input placeholder="University" type="text" name="coach_university" tabindex="4" required autofocus>
+                                                  <input placeholder="Department" type="text" name="volunteer_dept" tabindex="4" required autofocus>
                                                 </fieldset>
                                                 <fieldset>
-                                                    <input placeholder="E-Mail" type="email" name="coach_email" tabindex="4" required autofocus>
+                                                    <input placeholder="E-Mail" type="email" name="volunteer_email" tabindex="4" required autofocus>
                                                   </fieldset>
                                                   <fieldset>
-                                                    <input placeholder="Phone" type="text" name="coach_phone" tabindex="4" required autofocus>
+                                                    <input placeholder="Phone" type="text" name="volunteer_phone" tabindex="4" required autofocus>
+                                                  </fieldset>
+                                                  <fieldset>
+                                                    <input placeholder="Role" type="text" name="volunteer_role" tabindex="4" required autofocus>
                                                   </fieldset>
                                                 <fieldset>
                                                   <button type="submit">Submit</button>
@@ -290,29 +296,32 @@ $j='a';
 
                                         <table class="table table-bordered">
                                             <tr>
-                                                <th>Coach Id</th>
+                                                <th>Volunteer Id</th>
                                                 <th>Name</span></th>
                                                 <th>Address</th>
-                                                <th>University</th>
+                                                <th>Department</th>
+                                                <th>Level</th>
                                                 <th>Email</th>
-                                                <th>Phone No.</th>
-                                                <th>Edit</th>
+                                                <th>Phone</th>
+                                                <th>Role</th>
 
                                               </tr>
                                               <tr>
                                                 @foreach ($send as $row )
                                               @php
-                                                  $coach_id = $row['coach_id'];
+                                                  $volunteer_id = $row['volunteer_id'];
                                               @endphp
-                                              <td>{{ $row['coach_id'] }}</td>
-                                              <td>{{ $row['coach_name'] }}</td>
-                                              <td>{{ $row['coach_address'] }}</td>
-                                              <td>{{ $row['coach_university'] }}</td>
-                                              <td>{{ $row['coach_email'] }}</td>
-                                              <td>{{ $row['coach_phone'] }}</td>
-                                              <td >
+                                              <td>{{ $row['volunteer_id'] }}</td>
+                                              <td>{{ $row['volunteer_name'] }}</td>
+                                              <td>{{ $row['volunteer_address'] }}</td>
+                                              <td>{{ $row['volunteer_dept'] }}</td>
+                                              <td>{{ $row['volunteer_level'] }}</td>
+                                              <td>{{ $row['volunteer_email'] }}</td>
+                                              <td>{{ $row['volunteer_phone'] }}</td>
+                                              <td>{{ $row['volunteer_role'] }}</td>
+                                              {{-- <td >
                                                 {{-- Update Form --}}
-                                                <div class="w3-container" style="display: inline-block; margin-left:1px">
+                                                {{-- <div class="w3-container" style="display: inline-block; margin-left:1px">
                                                   <button onclick="document.getElementById('{{ $j }}').style.display='block'" class="w3-button w3-green w3-round">Edit</button>
 
                                                   <div id="{{ $j }}" class="w3-modal">
@@ -324,12 +333,12 @@ $j='a';
                                                       </header> -->
                                                       <span onclick="document.getElementById('{{ $j }}').style.display='none'"
                                                         class="w3-button w3-display-topright">&times;</span>
-                                                      <form id="contact" action="update_coach/{{ $coach_id }}" method="post">
+                                                      <form id="contact" action="update_volunteer/{{ $volunteer_id }}" method="post">
                                                         @csrf
-                                                        <h3> Update Coach Information</h3><br>
+                                                        <h3> Update volunteer Information</h3><br>
                                                         <fieldset>
                                                           <label for="">Address </label>
-                                                          <input placeholder="Address" type="text" name="coach_address" tabindex="1" value="{{  $row['coach_address']  }}" >
+                                                          <input placeholder="Address" type="text" name="volunteer_address" tabindex="1" value="{{  $row['volunteer_address']  }}" >
                                                         </fieldset>
                                                         <br>
 
@@ -337,20 +346,20 @@ $j='a';
 
                                                         <fieldset>
                                                           <label for="hello">Email:</label>
-                                                          <input placeholder="email" type="email" name="coach_email" tabindex="4" autofocus value="{{ $row['coach_email'] }}">
+                                                          <input placeholder="email" type="email" name="volunteer_email" tabindex="4" autofocus value="{{ $row['volunteer_email'] }}">
                                                       </fieldset>
                                                       <br>
 
                                                         <fieldset>
                                                            <label for="">Phone no. </label>
-                                                          <input placeholder="Phone" type="text" name="coach_phone" tabindex="4" value="{{ $row['coach_phone'] }}" >
+                                                          <input placeholder="Phone" type="text" name="volunteer_phone" tabindex="4" value="{{ $row['volunteer_phone'] }}" >
                                                         </fieldset>
                                                         <br>
                                                         <fieldset>
                                                           <button type="submit">Submit</button>
                                                         </fieldset>
                                                         <fieldset>
-                                                          <button type="submit" class="w3-red" formaction="delete_coach/{{ $coach_id }}">Delete Record</button>
+                                                          <button type="submit" class="w3-red" formaction="delete_volunteer/{{ $volunteer_id }}">Delete Record</button>
                                                         </fieldset>
 
                                                       </form>
@@ -360,7 +369,7 @@ $j='a';
                                                       </footer> -->
                                                     </div>
                                                   </div>
-                                                </div>
+                                                </div> --}}
                                               </td>
                                             </tr>
 

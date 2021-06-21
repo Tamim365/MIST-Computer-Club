@@ -20,6 +20,8 @@ use App\Http\Controllers\RNDController;
 use App\Http\Controllers\RNDTable;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\TeamsTable;
+use App\Http\Controllers\Volunteertable;
+use App\Http\Controllers\VounteerController;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
@@ -98,10 +100,17 @@ Route::post('delete_rnd/{id}',[RNDController::class,'delete']);
 
 //For Dashboard
 Route::view('dash', 'dashboard_index')->name('dashboard.index');
+Route::view('user_dash', 'users_dash')->name('user.index');
+Route::view('blog', 'blog')->name('blog.index');
 
+//For Volunteer
 
+Route::get('volunteer',[Volunteertable::class,'index'])->name('vol.table');
+Route::post('submit_volunteer',[VounteerController::class,'save']);
 
+//For Add Events
 
+Route::view('blogadd', 'blog_add')->name('blog_add.index');
 
 
 

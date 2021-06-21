@@ -19,7 +19,7 @@ class CreateRNDSTable extends Migration
             $table->string('project_title')->nullable();
             $table->integer('project_equipment')->nullable()->default(0);
             $table->integer('project_labor')->nullable()->default(0);;
-            $table->integer('project_management')->nullable()->default(0);;
+            $table->integer('project_management')->nullable()->default(0);
         });
     }
 
