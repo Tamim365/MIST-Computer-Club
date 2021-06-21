@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Budget extends Model
+class Contest extends Model
 {
-    protected $table ='budgets';
-    protected $primaryKey = 'budget_id';
-   public $incrementing = true;
+    protected $table ='contests';
+   public $incrementing = false;
    public $timestamps = false;
     // protected $table = 'admins';
 
+    protected $primaryKey = 'contest_name';
     use HasFactory;
 }

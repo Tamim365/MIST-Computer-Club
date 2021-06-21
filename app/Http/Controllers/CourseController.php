@@ -50,8 +50,8 @@ class CourseController extends Controller
                     'start_date' => $req->start,
                     'end_date' => $req->end,
                     'course_status' => $req->status,
-                    'course_materialsfee' => $req->mat_fee,
-                    'budget_id' => $req->budget_id]
+                    'course_materialsfee' => (int)$req->mat_fee,
+                    'budget_id' => (int)$req->budget_id]
 
                 );
         }

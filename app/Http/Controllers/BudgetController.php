@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 class BudgetController extends Controller
 {
     function save(Request $req){
-       //print_r($req->input());
 
          $Budget =new Budget;
          $Budget->budget_amount = (int)$req->Budget_Amount;
@@ -17,9 +16,16 @@ class BudgetController extends Controller
          $Budget->budget_proposal_Info = $req->Budget_Proposal_Info;
          $Budget->budget_transaction_date = $req->Budget_Transaction_Date;
          $Budget->remarks = $req->remarks;
-         
+
          $Budget->save();
 
+         if($req->filled('course_id')){
+            $file = DB::table('courses')
+                ->where('course_id',$req->course_id)
+                ->update(
+                    ['budget_id' => (int) $Budget->budget_id]
+                );
+            }
         //  $send = Budget::all()->toArray();
          //return view('Coursetable',compact('send'));
          return redirect()->back();
@@ -31,8 +37,8 @@ class BudgetController extends Controller
         $file = DB::table('budgets')
                 ->where('budget_id',$id)
                 ->update(
-                    ['budget_amount' => $req->Budget_Amount,
-                    'budget_remain' => $req->Budget_Remain,
+                    ['budget_amount' => (int)$req->Budget_Amount,
+                    'budget_remain' => (int)$req->Budget_Remain,
                     'budget_transaction_date' => $req->Budget_Transaction_Date,
                     'budget_proposal_info' => $req->Budget_Proposal_Info,
                     'remarks' => $req->remarks]

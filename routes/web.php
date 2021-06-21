@@ -11,9 +11,15 @@ use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\BudgetTable;
 use App\Http\Controllers\MyAdminController;
 use App\Http\Controllers\AdminTable;
+use App\Http\Controllers\CoachController;
+use App\Http\Controllers\CoachTable;
+use App\Http\Controllers\ContestController;
+use App\Http\Controllers\ContestTable;
 use App\Http\Controllers\Moderator;
-
-
+use App\Http\Controllers\RNDController;
+use App\Http\Controllers\RNDTable;
+use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\TeamsTable;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
@@ -47,27 +53,52 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/member/profile',[MemberController::class, 'member_profile'])->name('member.profile');
     Route::get('/moderator/profile',[ModeratorController::class, 'moderator_profile'])->name('moderator.profile');
 });
+//For Course
 Route::post('submit_course',[CourseController::class,'save']);
 Route::post('update_course/{id}',[CourseController::class,'update']);
 Route::post('delete_course/{id}',[CourseController::class,'delete']);
-Route::get('courses',[CourseTable::class,'index']);
+Route::get('courses',[CourseTable::class,'index'])->name('courses.table');
 //Route::get('courses',[CourseTable::class,'index']);
 Route::post('/course/enroll', [CourseController::class, 'enroll_as_participant'])->name('course.enroll.participant');
 
-
-Route::get('budgets',[BudgetTable::class,'index']);
+//For Budgets
+Route::get('budgets',[BudgetTable::class,'index'])->name('budget.table');
 Route::post('submit_budget',[BudgetController::class,'save']);
 Route::post('update_budget/{id}',[BudgetController::class,'update']);
 Route::post('delete_budget/{id}',[BudgetController::class,'delete']);
 
-
+//For Admins
 Route::get('admins',[AdminTable::class,'index']);
 Route::post('submit_ad',[MyAdminController::class,'save']);
 Route::post('update_admin/{id}',[MyAdminController::class,'update']);
 Route::post('delete_admin/{id}',[MyAdminController::class,'delete']);
 
+//For Teams
 
+Route::get('teams',[TeamsTable::class,'index'])->name('team.table');
+Route::post('submit_team',[TeamsController::class,'save']);
+Route::post('update_team/{id}',[TeamsController::class,'update']);
+Route::post('delete_team/{id}',[TeamsController::class,'delete']);
 
+//For Coach
+
+Route::get('coaches',[CoachTable::class,'index'])->name('coach.table');
+Route::post('submit_coach',[CoachController::class,'save']);
+Route::post('update_coach/{id}',[CoachController::class,'update']);
+Route::post('delete_coach/{id}',[CoachController::class,'delete']);
+
+//For contest
+Route::get('contest',[ContestTable::class,'index'])->name('contest.table');
+Route::post('submit_contest',[ContestController::class,'save']);
+
+//For RND
+Route::get('rnd',[RNDTable::class,'index'])->name('rnd.table');
+Route::post('submit_rnd',[RNDController::class,'save']);
+Route::post('update_rnd/{id}',[RNDController::class,'update']);
+Route::post('delete_rnd/{id}',[RNDController::class,'delete']);
+
+//For Dashboard
+Route::view('dash', 'dashboard_index')->name('dashboard.index');
 
 
 

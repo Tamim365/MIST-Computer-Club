@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Budget extends Model
+class Coach extends Model
 {
-    protected $table ='budgets';
-    protected $primaryKey = 'budget_id';
-   public $incrementing = true;
+
+    protected $table ='coaches';
+   public $incrementing = false;
    public $timestamps = false;
     // protected $table = 'admins';
 
+    protected $primaryKey = 'coach_id';
     use HasFactory;
 }
