@@ -11,5 +11,5 @@ class RNDTable extends Controller
         $send = RND::all()->toArray();
         return view('dashboard/rnd',compact('send'));
     }
-    }
+}
 

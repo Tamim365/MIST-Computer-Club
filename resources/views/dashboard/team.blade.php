@@ -14,6 +14,13 @@
     <!-- END CSS for this page -->
 @endsection
 @section('content')
+
+@php
+$i=1;
+$j='a';
+@endphp
+
+
     <div class="content-page">
 
             <!-- Start content -->
