@@ -16,6 +16,9 @@ use App\Http\Controllers\CoachTable;
 use App\Http\Controllers\ContestController;
 use App\Http\Controllers\ContestTable;
 use App\Http\Controllers\EnrollController;
+use App\Http\Controllers\FestController;
+use App\Http\Controllers\FestShow;
+use App\Http\Controllers\FestTable;
 use App\Http\Controllers\Moderator;
 use App\Http\Controllers\RNDController;
 use App\Http\Controllers\RNDTable;
@@ -105,7 +108,6 @@ Route::post('delete_rnd/{id}',[RNDController::class,'delete']);
 //For Dashboard
 Route::view('dash', 'dashboard_index')->name('dashboard.index');
 Route::view('user_dash', 'users_dash')->name('user.index');
-Route::view('blog', 'blog')->name('blog.index');
 Route::view('dashboard', 'dashboard/index');
 
 //For Volunteer
@@ -120,7 +122,12 @@ Route::view('blogadd', 'blog_add')->name('blog_add.index');
 //For Enroll
 
 Route::get('enroll',[EnrollController::class,'index'])->name('enroll.index');
-
+//For Fest
+Route::get('fest',[FestTable::class,'index'])->name('blog.index');
+Route::post('submit_fest',[FestController::class,'save']);
+Route::post('update_fest/{id}',[FestController::class,'update']);
+Route::post('delete_fest/{id}',[FestController::class,'delete']);
+Route::get('festShow',[FestShow::class,'show'])->name('festshow.index');
 
 
 

@@ -9,7 +9,7 @@ $k = 1000;
 <html lang="en">
 
 <head>
-    <title> Course Table</title>
+    <title> Event Table</title>
     <meta name="description" content="DataTables | Nura Admin">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,10 +32,27 @@ $k = 1000;
     <link rel="stylesheet" href="{{ asset('css/team table.css') }}">
     <link rel="stylesheet" href="{{ asset('css/form.css') }}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     <style>
         tfoot {
             display: table-header-group;
         }
+        .uploadcare--jcrop-holder>div>div, #preview {
+  /* border-radius: 50%; */
+}
+
+.uploadcare--widget__button_type_cancel .uploadcare--widget__button_type_remove{
+    display: none;
+}
+
+.uploadcare--widget__file-name, .uploadcare--widget__file-size {
+    display: inline;
+}
+
+/* Styles and stuff for the page */
+#preview {
+  margin-top: 1rem;
+}
     </style>
     <!-- END CSS for this page -->
 </head>
@@ -129,7 +146,7 @@ $k = 1000;
                             </a>
                         </li>
                         <li class="submenu">
-                            <a href="{{ route('blog.index') }}" >
+                            <a href="{{ route('blog.index') }}" class="active" >
                                 <i class="far fa-calendar-alt"></i>
                                 <span> Event And Activities </span>
 
@@ -154,7 +171,7 @@ $k = 1000;
                             </ul>
                         </li> --}}
                         <li class="submenu ">
-                            <a href="{{ route('courses.table') }}" class="active">
+                            <a href="{{ route('courses.table') }}" >
                                 <i class="fab fa-leanpub"></i>
                                 <span> Courses </span>
 
@@ -217,10 +234,10 @@ $k = 1000;
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="breadcrumb-holder">
-                                <h1 class="main-title float-left">Course Tables</h1>
+                                <h1 class="main-title float-left">EVentTables</h1>
                                 <ol class="breadcrumb float-right">
                                     <li class="breadcrumb-item">Home</li>
-                                    <li class="breadcrumb-item active">Course Tables</li>
+                                    <li class="breadcrumb-item active">Event Tables</li>
                                 </ol>
                                 <div class="clearfix"></div>
                             </div>
@@ -233,15 +250,16 @@ $k = 1000;
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="card mb-3">
                                 <div class="card-header">
-                                    <h3><i class="fas fa-table"></i> All Courses Going On</h3>
+                                    <h3><i class="fas fa-table"></i> All Events</h3>
 
                                 </div>
 
                                 <div class="card-body">
                                     <div style="display:flex ; align-content:center;">
 
+
                                         <div class="w3-container" style="display: inline-block; margin-top:20px">
-                                          <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-green w3-round">Add Course</button>
+                                          <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-green w3-round">Add Event</button>
 
                                           <div id="id02" class="w3-modal">
                                             <div class="w3-modal-content w3-animate-zoom">
@@ -252,25 +270,40 @@ $k = 1000;
                                               </header> -->
                                               <span onclick="document.getElementById('id02').style.display='none'"
                                                 class="w3-button w3-display-topright">&times;</span>
-                                              <form id="contact" action="submit_course" method="post">
+
+                                                <script>
+                                                    UPLOADCARE_PUBLIC_KEY = "a51f2657278fde93b5e2";
+                                                    UPLOADCARE_EFFECTS = 'crop';
+                                                    UPLOADCARE_IMAGES_ONLY = true;
+                                                    UPLOADCARE_PREVIEW_STEP = true;
+                                                    UPLOADCARE_CLEARABLE = true;
+                                                </script>
+                                                <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
+                                                <script src="https://ucarecdn.com/libs/widget-tab-effects/1.x/uploadcare.tab-effects.js"></script>
+                                              <form id="contact" action="submit_fest" method="post">
                                                 @csrf
-                                                <h3> New Course Registration </h3><br>
+                                                <h3> New Event Register </h3><br>
                                                 <fieldset>
-                                                  <input placeholder="Course Name" type="text" name="Course_name" tabindex="1" required autofocus>
+                                                  <input placeholder="Fest Title" type="text" name="fest_title" tabindex="1" required autofocus>
+                                                </fieldset>
+                                                {{-- <fieldset>
+                                                    <input placeholder="Budget ID" type="text" name="budget_id" tabindex="1" required autofocus>
+                                                </fieldset> --}}
+                                                <fieldset>
+                                                  <label for="birthday">Fest Date:</label>
+                                                  <input  placeholder="" type="date" name="fest_date" tabindex="2" required>
                                                 </fieldset>
                                                 <fieldset>
-                                                  <label for="birthday">Start Date:</label>
-                                                  <input  placeholder="Your Email Address" type="date" name="start" tabindex="2" required>
+                                                  <textarea placeholder="Fest Description" name="fest_description" tabindex="5" required></textarea>
                                                 </fieldset>
                                                 <fieldset>
-                                                  <textarea placeholder="Course Description" name="info" tabindex="5" required></textarea>
+                                                  <input placeholder="Fest Expenses" type="text" name="fest_expenses" tabindex="4" required autofocus>
                                                 </fieldset>
                                                 <fieldset>
-                                                  <input placeholder="Mentor Fee" type="text" name="mentor_fee" tabindex="4" required autofocus>
+                                                    <label for="">Fest Logo</label>
+                                                    <input type="hidden" name="picture" role="uploadcare-uploader" data-crop="1:1" data-images-only>
                                                 </fieldset>
-                                                <fieldset>
-                                                  <input placeholder="Course Materials Fee" type="text" name="mat_fee" tabindex="4" required autofocus>
-                                                </fieldset>
+
                                                 <fieldset>
                                                   <button type="submit">Submit</button>
                                                 </fieldset>
@@ -282,9 +315,6 @@ $k = 1000;
                                               </footer> -->
                                             </div>
                                           </div>
-                                        <form action="{{ route('enroll.index') }}" style="display: inline-block">
-                                            <button class="w3-button w3-green w3-round"  type="submit">Enrolled Courses</button>
-                                        </form>
                                         </div>
 
 
@@ -296,22 +326,24 @@ $k = 1000;
 
                                         <table class="table table-bordered">
                                             <tr>
-                                                <th>Course Id</th>
-                                                <th>Course Name</span></th>
-                                                <th>Start Date</th>
-                                                <th>Status</th>
-                                                <th>Decription</th>
-                                                <th>Budget Status</th>
+                                                <th>Fest Id</th>
+                                                <th>Fest Title</span></th>
+                                                <th>Budget ID</th>
+                                                <th>Fest Date</th>
+                                                <th>Fest Expenses</th>
+                                                <th>Action</th>
+
                                               </tr>
                                               <tr>
                                                 @foreach ($send as $row )
                                               @php
-                                                  $course_id = $row['course_id'];
+                                                  $fest_id = $row['fest_id'];
                                               @endphp
-                                              <td>{{ $row['course_id'] }}</td>
-                                              <td>{{ $row['course_name'] }}</td>
-                                              <td>{{ date('d-m-Y', strtotime($row['start_date']))}}</td>
-                                              <td>{{ $row['course_status'] }}</td>
+                                              <td>{{ $row['fest_id'] }}</td>
+                                              <td>{{ $row['fest_title'] }}</td>
+                                              <td>{{ $row['budget_id'] }}</td>
+                                              <td>{{ date('d-m-Y', strtotime($row['fest_date']))}}</td>
+                                              <td>{{ $row['fest_expenses'] }}</td>
                                               <td >
                                                 <div class="w3-container" style="display: inline-block;">
                                                   <button onclick="document.getElementById('{{ $i }}').style.display='block'" class="w3-button w3-green w3-round">View</button>
@@ -326,7 +358,7 @@ $k = 1000;
                                                       <div class="w3-container">
                                                         {{-- <p>Some text..</p>
                                                         <p>Some text..</p> --}}
-                                                        {{ $row['course_info'] }}
+                                                        {{ $row['fest_description'] }}
                                                       </div>
                                                       <footer class="w3-container w3-teal">
                                                         <p>Modal Footer</p>
@@ -347,48 +379,34 @@ $k = 1000;
                                                       </header> -->
                                                       <span onclick="document.getElementById('{{ $j }}').style.display='none'"
                                                         class="w3-button w3-display-topright">&times;</span>
-                                                      <form id="contact" action="update_course/{{ $course_id }}" method="post">
+                                                      <form id="contact" action="update_fest/{{ $fest_id }}" method="post">
                                                         @csrf
-                                                        <h3> Update Course</h3><br>
+                                                        <h3> Update Event</h3><br>
                                                         <fieldset>
-                                                          <label for="">Course Name: </label>
-                                                          <input placeholder="Course Name" type="text" name="Course_name" tabindex="1" value="{{  $row['course_name']  }}" >
+                                                          <label for="">Fest Title: </label>
+                                                          <input placeholder="Fest Title" type="text" name="fest_title" tabindex="1" value="{{  $row['fest_title']  }}" >
                                                         </fieldset>
                                                         <br>
                                                         <fieldset>
-                                                          <label for="">Start Date:</label>
+                                                          <label for="">Fest Date:</label>
                                                           @php
-                                                           $date = date('Y-m-d', strtotime($row['start_date']));
+                                                           $date = date('Y-m-d', strtotime($row['fest_date']));
                                                           @endphp
-                                                          <input  type="date" name="start" tabindex="2" value={{ $date }}>
-                                                        </fieldset>
-                                                        <br>
-                                                        <fieldset>
-                                                          <label for="">End Date:</label>
-                                                          <input  type="date" name="end" tabindex="2" >
+                                                          <input  type="date" name="fest_date" tabindex="2" value={{ $date }}>
                                                         </fieldset>
                                                         <br>
                                                       <br>
+
                                                         <fieldset>
-                                                           <label for="hello">Course Status:</label>
-                                                          <input placeholder="Course Status" type="text" name="status" tabindex="1" value="{{  $row['course_status'] }}">
-                                                        </fieldset>
-                                                        <br>
-                                                        <fieldset>
-                                                           <label for="hello">Budget ID:</label>
-                                                          <input placeholder="Budget ID" type="text" name="status" tabindex="1" value="{{  $row['budget_id'] }}" readonly>
-                                                        </fieldset>
-                                                        <br>
-                                                        <fieldset>
-                                                           <label for="">Materials Fee: </label>
-                                                          <input placeholder="Course Materials Fee" type="text" name="mat_fee" tabindex="4" value="{{ $row['course_materialsfee'] }}" >
+                                                           <label for="">Fest Expenses </label>
+                                                          <input placeholder="Fest Expenses" type="text" name="fest_expenses" tabindex="4" value="{{ $row['fest_expenses'] }}" >
                                                         </fieldset>
                                                         <br>
                                                         <fieldset>
                                                           <button type="submit">Submit</button>
                                                         </fieldset>
                                                         <fieldset>
-                                                          <button type="submit" class="w3-red" formaction="delete_course/{{ $course_id }}">Delete Record</button>
+                                                          <button type="submit" class="w3-red" formaction="delete_fest/{{ $fest_id }}">Delete Record</button>
                                                         </fieldset>
 
                                                       </form>
@@ -423,8 +441,8 @@ $k = 1000;
                                                   @csrf
                                                   <h3> New Budget Allocation </h3><br>
                                                   <fieldset>
-                                                    <h5>Course ID</h5>
-                                                    <input value="{{$course_id}}" type="text" name="course_id" tabindex="4"  readonly>
+                                                    <h5>fest ID</h5>
+                                                    <input value="{{$fest_id}}" type="text" name="fest_id" tabindex="4"  readonly>
                                                   </fieldset>
                                                   <fieldset>
                                                     <input placeholder="Budget Amount" type="text" name="Budget_Amount" tabindex="1" required autofocus>

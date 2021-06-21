@@ -18,14 +18,12 @@ class CreateFestsTable extends Migration
             $table->unsignedBigInteger('budget_id')->nullable();
             $table->foreign('budget_id')->references('budget_id')->on('budgets')->onUpdate('cascade')->onDelete('cascade');
             $table->date('Fest_Date')->nullable();
-            $table->string('Fest_Logistics')->nullable();
             $table->string('Fest_Title')->nullable();
             $table->text('Fest_Description')->nullable();
-            $table->string('Fest_Food')->nullable();
-            $table->string('Fest_Decoration')->nullable();
-            $table->string('Miscelleneous')->nullable();
-            
-            
+            $table->integer('Fest_expenses')->nullable();
+            $table->string('picture')->default('/default_user_img.png');
+
+
         });
     }
 
