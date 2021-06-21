@@ -16,10 +16,10 @@ class CreateBudgetsTable extends Migration
         Schema::create('budgets', function (Blueprint $table) {
             $table->increments('Budget_Id')->start(1000)->nocache();
             $table->integer('Budget_Amount')->nullable();
-            $table->integer('Budget_Remain')->nullable()->default(0);
             $table->string('Budget_Proposal_Info')->nullable();
             $table->date('Budget_Transaction_Date')->nullable();
             $table->string('Remarks')->nullable();
+            $table->string('Budget_Status')->nullable()->default('Pending');
         });
     }
 

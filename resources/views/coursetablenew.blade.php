@@ -263,9 +263,6 @@ $k = 1000;
                                                   <textarea placeholder="Course Description" name="info" tabindex="5" required></textarea>
                                                 </fieldset>
                                                 <fieldset>
-                                                    <input placeholder="Budget ID" type="text" name="budget_id" tabindex="4" autofocus>
-                                                </fieldset>
-                                                <fieldset>
                                                   <input placeholder="Mentor Fee" type="text" name="mentor_fee" tabindex="4" required autofocus>
                                                 </fieldset>
                                                 <fieldset>
@@ -297,6 +294,7 @@ $k = 1000;
                                                 <th>Start Date</th>
                                                 <th>Status</th>
                                                 <th>Decription</th>
+                                                <th>Budget Status</th>
                                               </tr>
                                               <tr>
                                                 @foreach ($send as $row )
@@ -394,55 +392,67 @@ $k = 1000;
                                                     </div>
                                                   </div>
                                                 </div>
+                                        
+                                        {{-- check for budget --}}
+                                            </td>
+                                        <td>
+                                        @if (!$row['budget_id'])
+                                          <div class="w3-container" style="display: inline-block;">
+                                            <button onclick="document.getElementById('{{$k}}').style.display='block'" class="w3-btn w3-orange w3-round">Request Budget</button>
+
+                                            <div id="{{$k}}" class="w3-modal">
+                                              <div class="w3-modal-content w3-animate-zoom">
+                                                <!-- <header class="w3-container w3-teal">
+                                                  <span onclick="document.getElementById('id02').style.display='none'"
+                                                  class="w3-button w3-display-topright">&times;</span>
+                                                  <h2>Modal Header</h2>
+                                                </header> -->
+                                                <span onclick="document.getElementById('{{$k}}').style.display='none'"
+                                                  class="w3-button w3-display-topright">&times;</span>
 
 
-                                        <div class="w3-container" style="display: inline-block; margin-top:20px">
-                                          <button onclick="document.getElementById('{{$k}}').style.display='block'" class="w3-button w3-orange w3-round">Request Budget</button>
 
-                                          <div id="{{$k}}" class="w3-modal">
-                                            <div class="w3-modal-content w3-animate-zoom">
-                                              <!-- <header class="w3-container w3-teal">
-                                                <span onclick="document.getElementById('id02').style.display='none'"
-                                                class="w3-button w3-display-topright">&times;</span>
-                                                <h2>Modal Header</h2>
-                                              </header> -->
-                                              <span onclick="document.getElementById('{{$k}}').style.display='none'"
-                                                class="w3-button w3-display-topright">&times;</span>
+                                                <form id="contact" action="submit_budget" method="post">
+                                                  @csrf
+                                                  <h3> New Budget Allocation </h3><br>
+                                                  <fieldset>
+                                                    <h5>Course ID</h5>
+                                                    <input value="{{$course_id}}" type="text" name="course_id" tabindex="4"  readonly>
+                                                  </fieldset>
+                                                  <fieldset>
+                                                    <input placeholder="Budget Amount" type="text" name="Budget_Amount" tabindex="1" required autofocus>
+                                                  </fieldset>
+                                                  <fieldset>
+                                                    <textarea placeholder="Budget Proposal Info" name="Budget_Proposal_Info" tabindex="5" required></textarea>
+                                                  </fieldset>
+                                                  <fieldset>
+                                                    <input placeholder="Remarks" type="text" name="remarks" tabindex="4"  autofocus>
+                                                  </fieldset>
+                                                  <fieldset>
+                                                    <button type="submit" class="w3-btn w3-orange w3-round">Request</button>
+                                                  </fieldset>
 
+                                                </form>
 
-
-                                              <form id="contact" action="submit_budget" method="post">
-                                                @csrf
-                                                <h3> New Budget Allocation </h3><br>
-                                                <fieldset>
-                                                  <h5>Course ID</h5>
-                                                  <input value="{{$course_id}}" type="text" name="course_id" tabindex="4"  readonly>
-                                                </fieldset>
-                                                <fieldset>
-                                                  <input placeholder="Budget Amount" type="text" name="Budget_Amount" tabindex="1" required autofocus>
-                                                </fieldset>
-                                                <fieldset>
-                                                  <label for="birthday">Budget Transaction Date</label>
-                                                  <input  type="date" name="Budget_Transaction_Date" tabindex="2" required>
-                                                </fieldset>
-                                                <fieldset>
-                                                  <textarea placeholder="Budget Proposal Info" name="Budget_Proposal_Info" tabindex="5" required></textarea>
-                                                </fieldset>
-                                                <fieldset>
-                                                  <input placeholder="Remarks" type="text" name="remarks" tabindex="4"  autofocus>
-                                                </fieldset>
-                                                <fieldset>
-                                                  <button type="submit" class="w3-button w3-orange w3-round">Request</button>
-                                                </fieldset>
-
-                                              </form>
-
-                                              <!-- <footer class="w3-container w3-teal">
-                                                <p>Modal Footer</p>
-                                              </footer> -->
+                                                <!-- <footer class="w3-container w3-teal">
+                                                  <p>Modal Footer</p>
+                                                </footer> -->
+                                              </div>
                                             </div>
                                           </div>
-                                        </div>`
+                                        @else
+                                        @php
+                                            $budget = DB::table('budgets')->where('budget_id', '=', $row['budget_id'])->get()[0];
+                                            $budget_status = $budget->budget_status;
+                                        @endphp
+                                          @if ($budget_status == 'Accepted')
+                                              <button class="w3-btn w3-teal w3-round">Accepted</button>
+                                          @elseif ($budget_status == 'Declined')
+                                              <button class="w3-btn w3-red w3-round">Declined</button>
+                                          @else   
+                                              <button class="w3-btn w3-blue w3-round">Pending</button>
+                                          @endif
+                                        @endif                                        
 
 
                                               </td>

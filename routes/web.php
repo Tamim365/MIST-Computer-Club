@@ -68,6 +68,8 @@ Route::get('budgets',[BudgetTable::class,'index'])->name('budget.table');
 Route::post('submit_budget',[BudgetController::class,'save']);
 Route::post('update_budget/{id}',[BudgetController::class,'update']);
 Route::post('delete_budget/{id}',[BudgetController::class,'delete']);
+Route::post('accept_budget/{id}',[BudgetController::class,'accept']);
+Route::post('decline_budget/{id}',[BudgetController::class,'decline']);
 
 //For Admins
 Route::get('admins',[AdminTable::class,'index']);

@@ -299,7 +299,6 @@ $j='a';
                                                 <th>Budget Id</th>
                                                 <th>Amount</th>
                                                 <th>Transaction Date</th>
-                                                <th>Remain</th>
                                                 <th>Remarks</th>
                                                 <th>Action</th>
                                               </tr>
@@ -311,7 +310,6 @@ $j='a';
                                                 <td>{{ $row['budget_id'] }}</td>
                                                 <td>{{ $row['budget_amount'] }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($row['budget_transaction_date']))}}</td>
-                                                <td>{{ $row['budget_remain'] }}</td>
                                                 <td>{{ $row['remarks'] }}</td>
                                                 <td >
                                                   <div class="w3-container" style="display: inline-block;">
@@ -390,6 +388,22 @@ $j='a';
                                                       </div>
                                                     </div>
                                                   </div>
+
+                                                @php
+                                                    $budget_status = $row['budget_status'];
+                                                @endphp
+                                                @if ($budget_status == 'Pending')
+                                                    <form method="post" style="display: inline-block">
+                                                        @csrf
+                                                        <button type="submit" class="w3-btn w3-green w3-round" formaction="accept_budget/{{ $budget_id }}">Accept</button>
+                                                        <button type="submit" class="w3-btn w3-red w3-round" formaction="decline_budget/{{ $budget_id }}">Decline</button>
+                                                    </form>
+                                                @elseif ($budget_status == 'Accepted')
+                                                    <button class="w3-btn w3-teal w3-round">Accepted</button>
+                                                @else
+                                                    <button class="w3-btn w3-red w3-round">Declined</button>
+                                                @endif
+
                                               </td>
                                             </tr>
 

@@ -12,9 +12,7 @@ class BudgetController extends Controller
 
          $Budget =new Budget;
          $Budget->budget_amount = (int)$req->Budget_Amount;
-         $Budget->budget_remain = (int)$req->Budget_Remain;
          $Budget->budget_proposal_Info = $req->Budget_Proposal_Info;
-         $Budget->budget_transaction_date = $req->Budget_Transaction_Date;
          $Budget->remarks = $req->remarks;
 
          $Budget->save();
@@ -52,6 +50,23 @@ class BudgetController extends Controller
 
         DB::table('budgets')->where('budget_id', $id)->delete();
         return redirect()->back();
-
+        
+    }
+    
+    function accept($id){
+        DB::table('budgets')
+        ->where('budget_id', '=', $id)
+        ->update([
+            'budget_status' => 'Accepted',
+        ]);
+        return redirect()->back();
+    }
+    function decline($id){
+        DB::table('budgets')
+        ->where('budget_id', '=', $id)
+        ->update([
+            'budget_status' => 'Declined',
+        ]);
+        return redirect()->back();
     }
 }
