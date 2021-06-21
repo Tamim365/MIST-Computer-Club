@@ -15,7 +15,8 @@ class CreateRNDSTable extends Migration
     {
         Schema::create('r_n_d_s', function (Blueprint $table) {
             $table->increments('project_id')->start(1000)->nocache();
-            $table->integer('budget_id')->nullable();
+            $table->unsignedBigInteger('budget_id')->nullable();
+            $table->foreign('budget_id')->references('budget_id')->on('budgets')->onUpdate('cascade')->onDelete('cascade');
             $table->string('project_title')->nullable();
             $table->integer('project_equipment')->nullable()->default(0);
             $table->integer('project_labor')->nullable()->default(0);;

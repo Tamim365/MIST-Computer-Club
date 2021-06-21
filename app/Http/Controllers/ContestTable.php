@@ -10,7 +10,7 @@ class ContestTable extends Controller
     public function index(){
 
         $send = Contest::all()->toArray();
-        return view('contesttable',compact('send'));
+        return view('dashboard/contest',compact('send'));
 
     }
 

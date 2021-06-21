@@ -114,7 +114,7 @@
                             </a>
                         </li>
                         <li class="submenu">
-                            <a href="{{ route('blog.index') }}" class="@if($active_class=='Event') active @endif">
+                            <a href="{{ route('blog.index') }}" class="@if($active_class=='fest') active @endif">
                                 <i class="far fa-calendar-alt"></i>
                                 <span> Event And Activities </span>
                             </a>
@@ -155,7 +155,7 @@
                             </a>
                         </li>
                         <li class="submenu ">
-                            <a href="{{ route('contest.table') }}" >
+                            <a href="{{ route('contest.table') }}" class="@if($active_class=='contest') active @endif">
                                 <i class="fas fa-laptop-code"></i>
                                 <span> Contest </span>
                             </a>
@@ -167,7 +167,7 @@
                             </a>
                         </li>
                         <li class="submenu ">
-                            <a href="{{ route('vol.table')  }}" >
+                            <a href="{{ route('vol.table')  }}"  class="@if($active_class=='volunteer') active @endif">
                                 <i class="fas fa-hands-helping"></i>
                                 <span> Volunteer </span>
                             </a>

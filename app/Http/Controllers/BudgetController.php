@@ -24,6 +24,20 @@ class BudgetController extends Controller
                     ['budget_id' => (int) $Budget->budget_id]
                 );
             }
+            else if($req->filled('project_id')){
+                $file = DB::table('r_n_d_s')
+                    ->where('project_id',$req->project_id)
+                    ->update(
+                        ['budget_id' => (int) $Budget->budget_id]
+                    );
+                }
+             else if($req->filled('fest_id')){
+                    $file = DB::table('fests')
+                        ->where('fest_id',$req->fest_id)
+                        ->update(
+                            ['budget_id' => (int) $Budget->budget_id]
+                        );
+                    }
         //  $send = Budget::all()->toArray();
          //return view('Coursetable',compact('send'));
          return redirect()->back();
@@ -50,9 +64,9 @@ class BudgetController extends Controller
 
         DB::table('budgets')->where('budget_id', $id)->delete();
         return redirect()->back();
-        
+
     }
-    
+
     function accept($id){
         DB::table('budgets')
         ->where('budget_id', '=', $id)

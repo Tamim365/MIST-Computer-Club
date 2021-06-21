@@ -10,7 +10,7 @@ class FestTable extends Controller
     public function index(){
 
         $send = Fest::all()->toArray();
-        return view('festtable',compact('send'));
+        return view('dashboard/festNew',compact('send'));
 
     }
 }
