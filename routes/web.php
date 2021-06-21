@@ -122,6 +122,7 @@ Route::view('blogadd', 'blog_add')->name('blog_add.index');
 //For Enroll
 
 Route::get('enroll',[EnrollController::class,'index'])->name('enroll.index');
+// Route::get('teams',[TeamsTable::class,'index'])->name('team.table');
 
 
 

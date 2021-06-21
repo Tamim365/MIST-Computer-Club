@@ -9,7 +9,7 @@ class Volunteertable extends Controller
 {
     public function index(){
         $send = Volunteer::all()->toArray();
-        return view('volunteer',compact('send'));
+        return view('dashboard/volunteerNew',compact('send'));
     }
 }
 
