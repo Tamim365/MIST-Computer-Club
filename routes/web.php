@@ -59,12 +59,11 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
     Route::get('/auth/logout',[AuthController::class, 'logout'])->name('auth.logout');
     Route::get('/member/profile',[MemberController::class, 'member_profile'])->name('member.profile');
-    Route::get('/member/profile',[MemberController::class, 'update'])->name('member.profile.update');
     Route::get('/moderator/profile',[ModeratorController::class, 'moderator_profile'])->name('moderator.profile');
 });
 
 ///updating panel
-Route::post('/panel/update',[MemberController::class, 'update_panel'])->name('panel.update');
+Route::post('/member/profile',[MemberController::class, 'update_panel'])->name('panel.update');
 
 
 //For Course

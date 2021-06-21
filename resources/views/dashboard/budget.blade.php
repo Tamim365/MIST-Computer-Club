@@ -83,9 +83,6 @@ $j='a';
                                                   <textarea placeholder="Budget Proposal Info" name="Budget_Proposal_Info" tabindex="5" required></textarea>
                                                 </fieldset>
                                                 <fieldset>
-                                                  <input placeholder="Budget Remain" type="text" name="Budget_Remain" tabindex="4"  autofocus>
-                                                </fieldset>
-                                                <fieldset>
                                                   <input placeholder="Remarks" type="text" name="remarks" tabindex="4"  autofocus>
                                                 </fieldset>
                                                 <fieldset>
