@@ -99,7 +99,7 @@
                         </li>
 
                         <li class="submenu">
-                            <a href="{{ route('user.index') }}">
+                            <a href="{{url('dashboard/user') }}">
                                 <i class="fas fa-user"></i>
                                 <span> Users </span>
                             </a>
