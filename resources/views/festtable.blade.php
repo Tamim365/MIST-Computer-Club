@@ -332,6 +332,7 @@ $k = 1000;
                                                 <th>Fest Date</th>
                                                 <th>Fest Expenses</th>
                                                 <th>Action</th>
+                                                <th>Budget Status</th>
 
                                               </tr>
                                               <tr>
