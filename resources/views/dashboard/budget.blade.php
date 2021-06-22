@@ -123,27 +123,7 @@ $j='a';
                                                 <td>{{ date('d-m-Y', strtotime($row['budget_transaction_date']))}}</td>
                                                 <td>{{ $row['remarks'] }}</td>
                                                 <td >
-                                                  <div class="w3-container" style="display: inline-block;">
-                                                    <button onclick="document.getElementById('{{ $i }}').style.display='block'" class="w3-button w3-green w3-round">View</button>
-
-                                                    <div id="{{ $i }}" class="w3-modal">
-                                                      <div class="w3-modal-content w3-animate-zoom">
-                                                        <header class="w3-container w3-teal">
-                                                          <span onclick="document.getElementById('{{ $i }}').style.display='none'"
-                                                          class="w3-button w3-display-topright">&times;</span>
-                                                          <h2>Modal Header</h2>
-                                                        </header>
-                                                        <div class="w3-container">
-                                                          {{-- <p>Some text..</p>
-                                                          <p>Some text..</p> --}}
-                                                          {{ $row['budget_proposal_info'] }}
-                                                        </div>
-                                                        <footer class="w3-container w3-teal">
-                                                          <p>Modal Footer</p>
-                                                        </footer>
-                                                      </div>
-                                                    </div>
-                                                  </div>
+                                                  
                                                 {{-- Update Form --}}
                                                 <div class="w3-container" style="display: inline-block; margin-left:1px">
                                                     <button onclick="document.getElementById('{{ $j }}').style.display='block'" class="w3-button w3-green w3-round">Edit</button>
@@ -171,11 +151,6 @@ $j='a';
                                                              $date = date('Y-m-d', strtotime($row['budget_transaction_date']));
                                                             @endphp
                                                             <input  type="date" name="Budget_Transaction_Date" tabindex="2" value={{ $date }}>
-                                                          </fieldset>
-                                                          <br>
-                                                          <fieldset>
-                                                            <label for="">Budget Remain:</label>
-                                                            <input  type="text" name="Budget_Remain" tabindex="2" >
                                                           </fieldset>
                                                           <br>
                                                           <fieldset>
@@ -235,6 +210,19 @@ $j='a';
                                 <!-- end card-body-->
 
                             </div>
+
+                            <div class="row">
+                              <div class="col-xl-12">
+                                  <div class="breadcrumb-holder">
+                                    @php
+                                        $amount = DB::select('SELECT SUM(BUDGET_AMOUNT) AS total FROM BUDGETS WHERE BUDGET_STATUS = :status', ['status'=>'Accepted'])[0];
+                                    @endphp
+                                      <h1 class="main-title float-left">Total Amount: {{$amount->total}}</h1>
+                                      
+                                      <div class="clearfix"></div>
+                                  </div>
+                              </div>
+                          </div>
                             <!-- end card-->
 
                         </div>
