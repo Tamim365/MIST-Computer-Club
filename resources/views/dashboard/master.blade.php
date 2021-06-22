@@ -120,6 +120,13 @@
                             </a>
                         </li>
 
+                        <li class="submenu">
+                            <a href="{{ route('dashboard.committee') }}" class="@if($active_class=='committee') active @endif">
+                                <i class="far fa-calendar-alt"></i>
+                                <span> Committee </span>
+                            </a>
+                        </li>
+
 
                         {{-- <li class="submenu">
                             <a id="tables" href="#">
