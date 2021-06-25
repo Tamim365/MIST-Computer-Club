@@ -119,6 +119,7 @@ $k = 1000;
                                                 @foreach ($send as $row )
                                               @php
                                                   $course_id = $row['course_id'];
+                                                  DB::table('courses')->select('begin execute update_course_status(:id)',['id'=>$course_id]);
                                               @endphp
                                               <td>{{ $row['course_id'] }}</td>
                                               <td>{{ $row['course_name'] }}</td>
