@@ -97,22 +97,24 @@
                                 <span> Dashboard </span>
                             </a>
                         </li>
-
+                        @if (session('LoggedUser')[1]=='admin')
                         <li class="submenu">
                             <a href="{{url('dashboard/user') }}" class="@if($active_class=='user') active @endif">
                                 <i class="fas fa-user"></i>
                                 <span> Members </span>
                             </a>
                         </li>
+                        @endif
 
-
-
+                        @if (session('LoggedUser')[1]=='admin')
                         <li class="submenu">
                             <a href="{{ route('budget.table') }}" class="@if($active_class=='budget') active @endif">
                                 <i class="fas fa-money-check-alt"></i>
                                 <span> Budgets </span>
                             </a>
                         </li>
+                        @endif
+
                         <li class="submenu">
                             <a href="{{ route('blog.index') }}" class="@if($active_class=='fest') active @endif">
                                 <i class="far fa-calendar-alt"></i>

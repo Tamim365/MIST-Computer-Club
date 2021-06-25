@@ -75,7 +75,10 @@
                                     @if (session('LoggedUser')[1]=='admin')
                                         <li><a href="{{route('dashboard.index')}}">Dashboard</a></li>                                   
                                     @else
-                                        <li><a href="{{route('member.profile')}}">Profile</a></li>                                   
+                                        <li><a href="{{route('member.profile')}}">Profile</a></li>   
+                                        @if (session('LoggedUser')[1]=='moderator')
+                                        <li><a href="{{route('dashboard.index')}}">Dashboard</a></li>                                                                    
+                                        @endif                                
                                     @endif
                                 @else
                                     <li><a href="{{route('auth.login')}}">Login</a></li>
