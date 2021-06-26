@@ -1,12 +1,17 @@
+--In our project code, this view is used at resources/views/dashboard/committee.blade.php at line 74
 CREATE OR REPLACE FORCE VIEW panel_members AS 
 SELECT club_id, panel_role, committe_name, email, name, picture
 FROM members
 WHERE panel_role IS NOT NULL;
 
+--In our project code, this view is used at resources/views/courses/index.blade.php at line 12
 CREATE OR REPLACE FORCE VIEW available_courses AS
 SELECT course_id, course_name, course_status, course_info, start_date, course_materialsfee
 FROM courses
 WHERE course_status != 'Ended';
+
+--In our project code, this join is used at app/http/controllers/EnrollController.php at line 12
+select club_id, name,course_id,course_name,participation_role from members natural join  enrolls natural join courses;
 
 SET SERVEROUTPUT on;
 
@@ -33,6 +38,7 @@ BEGIN
     UPDATE courses SET course_status = status WHERE course_id = c_id;
 END;
 --EXECUTE update_course_status(1000);
+--In our project code, this procedure is used at resourses/views/dashboard/courses.blade.php at line 122
 
 --custom hash function
 create or replace function custom_hash (p_username in varchar2, p_password in varchar2)
@@ -46,8 +52,11 @@ l_password := utl_raw.cast_to_raw(dbms_obfuscation_toolkit.md5
     substr(l_salt, 4,10)));
 return l_password;
 end;
+--go to database/migration from our project directory and open migration table of member/moderator/admin to see the use of hash function
+--this hash function is used while storing and retriving member/moderator/admin password
+--for storing and retriving go to app/http/controllers/AuthController.php to see the use
 
---SEQUENCES
+--SEQUENCES 
 CREATE SEQUENCE  "ADMINS_ADMIN_ID_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE ;
 CREATE SEQUENCE  "BUDGETS_BUDGET_ID_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1000 NOCACHE  NOORDER  NOCYCLE ;
 CREATE SEQUENCE  "COACHES_COACH_ID_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1000 NOCACHE  NOORDER  NOCYCLE ;
@@ -58,6 +67,7 @@ CREATE SEQUENCE  "R_N_D_S_PROJECT_ID_SEQ"  MINVALUE 1 MAXVALUE 99999999999999999
 CREATE SEQUENCE  "TEAMS_TEAM_ID_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1000 NOCACHE  NOORDER  NOCYCLE ;
 CREATE SEQUENCE  "USERS_ID_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE ;
 CREATE SEQUENCE  "VOLUNTEERS_VOLUNTEER_ID_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1000 NOCACHE  NOORDER  NOCYCLE ;
+--These sequences are used in migration table. Go to database/migrations to see.
 
 --TRIGGERS
 create or replace trigger admins_Admin_Id_trg
@@ -141,9 +151,9 @@ create or replace trigger volunteers_volunteer_id_trg
             end if;
             end;
 
-select club_id, name,course_id,course_name,participation_role from members natural join  enrolls natural join courses;
+--These triggers are used while inserting the data. Go to app/http/controllers to see various insertions.
 
---for calculating budget
+--for calculating budget, used at resources/views/dashboard/budget.blade.php at line 218
 SELECT SUM(BUDGET_AMOUNT) FROM BUDGETS;
 
 
