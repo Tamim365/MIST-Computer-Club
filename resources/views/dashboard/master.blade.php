@@ -35,7 +35,9 @@
             <div class="headerbar-left">
                 <a href="{{route('/')}}" class="logo">
                     <img alt="Logo" src="{{URL::asset('assets/images/logo.png')}}" />
-                    <span> Admin</span>
+                    @if (session('LoggedUser')[1]=='admin') <span> Admin</span>
+                    @else <span> Moderator</span> 
+                    @endif
                 </a>
             </div>
 
