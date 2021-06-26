@@ -9,9 +9,9 @@ e_date courses.start_date%TYPE;
 status courses.course_status%TYPE;
 BEGIN
     SELECT start_date, end_date INTO s_date, e_date FROM courses WHERE course_id = c_id;
-    IF trunc(s_date) > trunc(sysdate) THEN 
+    IF trunc(s_date) > trunc(sysdate) THEN
         status := 'Comming Soon';
-    ELSE 
+    ELSE
         IF e_date IS NULL THEN
             status := 'Running';
         ELSIF trunc(e_date) > trunc(sysdate) THEN
@@ -130,7 +130,9 @@ create or replace trigger volunteers_volunteer_id_trg
                 select volunteers_volunteer_id_seq.nextval into :new.VOLUNTEER_ID from dual;
             end if;
             end;
-            
+
+select club_id, name,course_id,course_name,participation_role from members natural join  enrolls natural join courses
+
 --for calculating budget
 SELECT SUM(BUDGET_AMOUNT)
 FROM BUDGETS;
