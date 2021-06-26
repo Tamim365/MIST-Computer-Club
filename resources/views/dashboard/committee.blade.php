@@ -70,7 +70,8 @@
                     @endphp
                     @if ($committee)
                     @php
-                        $members = DB::table('members')->where('committe_name', '=', $committee)->get();
+            
+                        $members = DB::select('SELECT * FROM panel_members');
                         // dd($members);
                     @endphp
 
@@ -153,8 +154,10 @@
                         <h3>
                             <i class="far fa-user"></i> All Members</h3>
                     </div>
+                    @php
+                        $members = DB::table('members')->where('committe_name', '=', $committee)->get();
+                    @endphp
                     <div class="card-body">
-
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>

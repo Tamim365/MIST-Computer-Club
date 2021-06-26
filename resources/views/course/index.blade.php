@@ -8,15 +8,18 @@
 
 
 <div class="courses-container">
+    @php
+        $all_courses = DB::select('SELECT * FROM available_courses');
+    @endphp
     @foreach ($all_courses as $course)
     <div class="course">
     @php
-        $course_id = $course['course_id'];
-        $course_name = $course['course_name'];
-        $course_status = $course['course_status'];
-        $course_info = $course['course_info'];
-        $start_date = $course['start_date'];
-        $course_materialsFee = $course['course_materialsfee'];
+        $course_id = $course->course_id;
+        $course_name = $course->course_name;
+        $course_status = $course->course_status;
+        $course_info = $course->course_info;
+        $start_date = $course->start_date;
+        $course_materialsFee = $course->course_materialsfee;
     @endphp
         <div class="course-preview">
             <h6>Course</h6>

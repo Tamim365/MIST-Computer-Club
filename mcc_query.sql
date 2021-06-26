@@ -1,3 +1,13 @@
+CREATE OR REPLACE FORCE VIEW panel_members AS 
+SELECT club_id, panel_role, committe_name, email, name, picture
+FROM members
+WHERE panel_role IS NOT NULL;
+
+CREATE OR REPLACE FORCE VIEW available_courses AS
+SELECT course_id, course_name, course_status, course_info, start_date, course_materialsfee
+FROM courses
+WHERE course_status != 'Ended';
+
 SET SERVEROUTPUT on;
 
 --PROCEDURE for updating course status depending on current date
@@ -131,11 +141,10 @@ create or replace trigger volunteers_volunteer_id_trg
             end if;
             end;
 
-select club_id, name,course_id,course_name,participation_role from members natural join  enrolls natural join courses
+select club_id, name,course_id,course_name,participation_role from members natural join  enrolls natural join courses;
 
 --for calculating budget
-SELECT SUM(BUDGET_AMOUNT)
-FROM BUDGETS;
+SELECT SUM(BUDGET_AMOUNT) FROM BUDGETS;
 
 
 --for debugging
@@ -145,6 +154,8 @@ SELECT * FROM ENROLLS;
 SELECT * FROM ADMINS;
 SELECT * FROM COURSES;
 SELECT * FROM BUDGETS;
+SELECT * FROM panel_members;
+SELECT * FROM available_courses;
 
 Insert into ADMINS (ADMIN_ID,ADMIN_NAME,ADMIN_EMAIL,ADMIN_PASSWORD,ADMIN_PHONE,ACCESS_TIME) values (1,'Tariquel Islam Tamim','admin@mcc.mist.ac.bd','$2y$10$4Wdf316q/BaieErQGygoi.xH5bzdjaNd0tf97i1ghiFF.yL5jGhKS',null,null);
 
